@@ -1,0 +1,48 @@
+body{
+    background: #343434;
+}
+
+.jumbotron{
+  background: url(../img/roman.jpg) center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 190px;
+  margin-top: 13px;
+  border: 2px solid #C0C0C0;
+}
+
+h1 {
+  font-family: Monospace;
+  color: #C0C0C0;
+  font-size: 3.2em;
+}
+
+table {
+  color: #C0C0C0;
+  margin-top: 12px;
+}
+tbody:hover {
+  background-color: #7A7A7A;
+}
+th {
+  font-size: 1.2em;
+}
+
+.input-group {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.btn-default {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+td, th {
+   text-align: center;   
+}
+
+
+
