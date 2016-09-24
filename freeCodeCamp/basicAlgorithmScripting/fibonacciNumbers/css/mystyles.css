@@ -14,6 +14,7 @@ h1 {
   font-family: Monospace;
   color: #C0C0C0;
   font-size: 3.2em;
+  position: center;
 }
 
 .input-group {
@@ -27,7 +28,20 @@ button {
   margin-right: 2px;
 }
 
-
+#result {
+  font-family: Monospace;
+  color: #C0C0C0;
+  font-size: 2.5em;
+  position: center;
+  width: 55%;
+}
+#results {
+  font-family: Monospace;
+  color: #C0C0C0;
+  overflow-wrap: break-word;
+  font-size: 1.4em;
+  position: center;
+}
 
 
 
