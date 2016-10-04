@@ -10,7 +10,7 @@ Smallest Common Multiple
 */
 
 function smallestCommons(arr) {
-    // get primes 
+  // get primes 
   function getPrimes(num) {
     primes = [];
     for (var i = 2; i <= num; i++) {
@@ -24,6 +24,7 @@ function smallestCommons(arr) {
       if (notPrime === false) 
         primes.push(i);
     }
+    return primes;
   }
   
   // get range array 
@@ -31,7 +32,7 @@ function smallestCommons(arr) {
   var start = arr[0];
   var end = arr[1];
   if (start < end) {
-    getPrimes(end);
+    getPrimes(end);  // call getPrimes function
     for (start; start <= end; start++) {
       rangeArray.push(start);
     }
@@ -42,28 +43,30 @@ function smallestCommons(arr) {
       rangeArray.push(end);
     }
   }
-  console.log("Range Array: ", rangeArray);
-  console.log("Primes:", primes);
+  rangeArray = rangeArray.reverse();
 
-  // get array to multiplay elements
-  var arrayToMultiply = [];
-  var devideBy = 2;
-  var finalResult;
-  for (var j = 0; j < rangeArray.length; j++) {
-    if (rangeArray[j] % devideBy === 0 && rangeArray[j] > 1) {
-      arrayToMultiply.push(primes[j]);
-      //console.log("RangeArray[i]:", rangeArray[i]);
+  //console.log("Range Array: ", rangeArray);
+  //console.log("Primes:", primes);
+ 
+  // get final result
+  var finalResult = 0;
+  var step = 1;
+  var ind;
+    
+  do {
+    finalResult = rangeArray[0] * step * rangeArray[1];
+    for (ind = 2; ind < rangeArray.length; ind++) {
+      if (finalResult % rangeArray[ind] !== 0) {
+        break;
+      }
     }
-    
-    
-  }
-  console.log("Array to multiply: ", arrayToMultiply);
- finalResult = arrayToMultiply.reduce(function(a,b){return a*b;});
-  
-  
+    step++;
+  } 
+  while (ind !== rangeArray.length) 
+    return finalResult;  
 }
 
-smallestCommons([1,5]);
+smallestCommons([4,6]);
 /*
 smallestCommons([1, 5]) should return a number.
 smallestCommons([1, 5]) should return 60.
