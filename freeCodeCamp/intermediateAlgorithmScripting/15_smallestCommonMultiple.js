@@ -62,7 +62,7 @@ function smallestCommons(arr) {
     }
     step++;
   } 
-  while (ind !== rangeArray.length) 
+  while (ind !== rangeArray.length);
     return finalResult;  
 }
 
