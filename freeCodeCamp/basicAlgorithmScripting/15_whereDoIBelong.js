@@ -10,17 +10,19 @@ Here are some helpful links:
 Array.prototype.sort()
 */
 ///////////////////// solution 01  /////////////////////
-function where(arr, num) {
-  counter = 0;
-  for (i = 0; i < arr.length; i++) {
-    if ((arr[i] - num) < 0) {
-      counter += 1;
-    }
+function getIndexToIns(arr, num) {
+  arr.sort();
+  var counter = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i]  < num) {
+      counter += 1;  
+    }   
   }
+  //console.log(counter);
   return counter;
 }
 
-where([40, 60], 50);
+getIndexToIns([40, 60], 50);
 /*
 getIndexToIns([10, 20, 30, 40, 50], 35) should return 3.
 getIndexToIns([10, 20, 30, 40, 50], 30) should return 2.
