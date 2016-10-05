@@ -7,14 +7,14 @@ Here are some helpful links:
 Arguments object
 Array.prototype.filter()
 */
-
+// solution 01
 function destroyer(arr) {
   var deleted = [];
   for (var i = 0; i < arguments.length; i++) {
     deleted.push(arguments[i]);    
   }
   
-  return arr.filter(function(x) {
+  return arr.filter(function(x) { // return true to keep the element, false otherwise
     if (deleted.indexOf(x) >= 0) {
       return false;
     } else {
@@ -22,7 +22,22 @@ function destroyer(arr) {
     }
   });
 }
+
+//solution 02
+/*
+function destroyer(arr) {
+  var deleted = [];
+  for (var i = 0; i < arguments.length; i++) {
+    deleted.push(arguments[i]);    
+  }
   
+  return arr.filter(function(x) { // return true to keep the element, false otherwise
+      return deleted.indexOf(x) <= 0;
+  });
+}
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+*/
+
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 /*
 destroyer([1, 2, 3, 1, 2, 3], 2, 3) should return [1, 1].
