@@ -48,22 +48,25 @@ function checkCashRegister(cijena, gotovina, novacUBlagajni) {
       console.log("NOVAC U BLAGAJNI: ", novacUBlagajni[i][1]);
       potroseno += novcanice[i][1];
       potroseno = parseFloat(potroseno.toFixed(2));
-      console.log("POTROSENO: ", potroseno.toFixed(2));
-      
+      console.log("POTROSENO: ", parseFloat(potroseno.toFixed(2)));  
     }
     if ( potroseno > 0 ) {
-      rezultat.push([novcanice[i][0], potroseno.toFixed(2)]);
+      rezultat.push([novcanice[i][0], parseFloat(potroseno.toFixed(2))]);
     }
-    
-    console.log("##### end of for #####");
-  }
+    if ( potroseno === total ) {
+      return "Closed";
+    }
+}  
   if (rezultat.length < 1 || kusur > 0) {
     return "Insufficient Funds";
   }
   console.log(rezultat);
   return rezultat;
   
+  
+  
 }
+
 
 checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
 //should return [["TWENTY", 60.00], ["TEN", 20.00], ["FIVE", 15.00], ["ONE", 1.00], ["QUARTER", 0.50], ["DIME", 0.20], ["PENNY", 0.04]]
