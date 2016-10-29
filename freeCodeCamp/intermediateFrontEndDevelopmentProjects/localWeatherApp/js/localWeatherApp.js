@@ -39,8 +39,6 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     var tempC = Math.floor(val.main.temp) + " &#8451;";
     var tempF = Math.floor((tempC*1.8)+32); 
     var icon = val.weather[0].icon;
-    //icon = "http://openweathermap.org/img/w/"+icon+".png";
-    console.log(icon);
     var wind = val.wind.speed;
     var pressure = val.main.pressure + " hPa";
      
