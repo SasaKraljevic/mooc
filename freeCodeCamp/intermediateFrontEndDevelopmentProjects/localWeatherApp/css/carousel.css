@@ -65,10 +65,7 @@ body {
   display: none;
 }
 
-/* change weather icons color */
-h2 {
-  color: #FF0000;
-}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -83,6 +80,24 @@ h2 {
 .marketing .col-lg-4 p {
   margin-right: 10px;
   margin-left: 10px;
+}
+/* change weather icons color */
+h2 {
+  color: #3399ff;
+}
+.col-lg-2 {
+  background-color: #f52f54;
+  margin: 2px;
+}
+
+.grad {
+    height: 150px;
+    width: 200px;
+    background: -webkit-radial-gradient(circle, white, blue); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(circle, white, blue); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, white, blue); /* For Fx 3.6 to 15 */
+    background: radial-gradient(circle, white, blue); /* Standard syntax (must be last) */
+    border-radius: 25px;
 }
 /*
 .circleBase {
