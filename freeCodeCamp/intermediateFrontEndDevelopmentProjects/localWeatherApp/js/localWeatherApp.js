@@ -1,19 +1,40 @@
 $(document).ready(function(){
-    var city;
+    //var city;
+    var location;
+    //var lat;
+    //var lon;
+/*
 // get user location
 $.get("http://ipinfo.io", function (response) {
     //$("#ip").html("IP: " + response.ip);
-    city = response.city;
-    console.log(response.loc);
-    $("#city").html("Location: " + response.city + ", " + response.region);
+    city = response.city
+    console.log("CITY: ",city);
+    console.log("RESPONSE :", response);
+    location = response.loc.split(",");
+    var lat = (Math.round(location[0] * 100) / 100);
+    var lon = (Math.round(location[1] * 100) / 100);
+    lat = lat.toString();
+    lon = lon.toString();
+    console.log("LAT: ", lat);
+    console.log("LON: ", lon);
+    $("#city").html("Location: " + city + ", " + response.region);
     //$("#city2").html(JSON.stringify(response, null, 4));
 }, "jsonp")
-   
+*/
+$.getJSON('https://freegeoip.net/json/' , function(data) {
+    console.log(data);
+    var city = data.city;
+    var country = data.country_name
+    $("#city").html(city + ", " + country);
+    console.log(city);
+    console.log(country);
+
 // get weather json info
-$.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=8c0fc22e3317a7404e6791d841e9f602&units=metric", function(val){
-      
+$.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=metric&APPID=8c0fc22e3317a7404e6791d841e9f602", function(val){
+//$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=8c0fc22e3317a7404e6791d841e9f602&units=metric", function(val){
     console.log("--------------");
-    console.log(val);
+    console.log("VAL: ", val);
+    console.log("CITY2: ", val.name);
     var weather = val.weather[0].main;
     var tempC = Math.floor(val.main.temp) + " &#8451;";
     var tempF = Math.floor((tempC*1.8)+32); 
@@ -21,6 +42,7 @@ $.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=8c0fc
     var wind = val.wind.speed;
     var pressure = val.main.pressure + " hPa";
      
+    //$("#city").html("Location: " + val.name); 
     $("#temp").html(tempC); 
     $("#humidity").html(weather); 
     $("#wind").html(wind + " km/h"); 
@@ -29,8 +51,7 @@ $.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=8c0fc
     // $("#temperature").html(html3);
 
 })
-
-
+});
 
 
 });
