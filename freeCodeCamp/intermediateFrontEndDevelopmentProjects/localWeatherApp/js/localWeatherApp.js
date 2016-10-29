@@ -36,6 +36,7 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     console.log("VAL: ", val);
     console.log("CITY2: ", val.name);
     var weather = val.weather[0].main;
+    var humidity = val.main.humidity + " &#37;";
     var tempC = Math.floor(val.main.temp) + " &#8451;";
     var tempF = Math.floor((tempC*1.8)+32); 
     var icon = val.weather[0].icon;
@@ -44,10 +45,10 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
      
     //$("#city").html("Location: " + val.name); 
     $("#temp").html(tempC); 
-    $("#humidity").html(weather); 
-    $("#wind").html(wind + " km/h"); 
+    $("#humidity").html(humidity); 
+    $("#wind").html(wind + " m/s"); 
     $("#pressure").html(pressure);
-    //$("#icon").html(icon);
+    $("#weather").html(weather);
     $("#icon").attr("src", "http://openweathermap.org/img/w/"+icon+".png");
      
     // $("#temperature").html(html3);

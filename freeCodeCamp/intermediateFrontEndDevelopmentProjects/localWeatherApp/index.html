@@ -27,8 +27,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/carousel.css" rel="stylesheet">
+
+    <link href="css/weather-icons.css" rel="stylesheet">
     
   </head>
 <!-- NAVBAR
@@ -81,26 +83,33 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
+<div class="container">
     <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2">
           <div id="temp"></div>
-          <h2>Temperature</h2>
+          <h2><i class="wi wi-thermometer"></i></h2>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <div id="humidity"></div>
-          <h2>Humidity</h2>
+          <h2><i class="wi wi-humidity"></i></h2>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <div id="wind"></div>
-          <h2>Wind</h2>
+          <h2><i class="wi wi-windy"></i></h2>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <div id="pressure"></div>
-          <h2>Pressure</h2>
+          <h2><i class="wi wi-barometer"></i></h2>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-2">
+          <div id="weather"></div>
+          <h2><i class="wi wi-cloudy"></i></h2>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-1">
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
@@ -111,7 +120,7 @@
       <!-- FOOTER -->
 
     </div><!-- /.container -->
-
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
