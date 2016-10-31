@@ -41,7 +41,7 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     var tempF = Math.floor((tempC*1.8)+32); 
     var icon = val.weather[0].icon;
     var wind = val.wind.speed;
-    var pressure = val.main.pressure + " hPa";
+    var pressure = Math.floor(val.main.pressure) + " hPa";
      
     //$("#city").html("Location: " + val.name); 
     $("#temp").html(tempC); 
