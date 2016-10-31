@@ -81,12 +81,20 @@ body {
   margin-left: 5px;
   margin-right: 5px;
   font-size: 2.1em;
+  font-weight: bold;
   color: #ffffff;
 }
+#temp, #humidity, #wind, #pressure, #weather {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 .marketing h2 {
-  font-weight: normal;
+  font-weight: bold;
   /* change weather icons color */
   color: #006699;
+}
+.marketing h3 {
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .marketing .col-lg-4 p {
   margin-right: 10px;
@@ -107,16 +115,38 @@ body {
 
 #tempe {
   background-image: url("../img/temperature.jpeg");
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
+}
+#hum {
+  background-image: url("../img/humidity.jpg");
+}
+#windy {
+  background-image: url("../img/wind.jpg");
+}
+#press {
+  background-image: url("../img/pressure.png");
+}
+#sky {
+  background-image: url("../img/sky.jpg");
 }
 
-/* Landscape phones and portrait tablets */
+/* hide bg images on smaller screen */
 @media (max-width: 991px) {
-
-          #tempe {
-        background-image: none;
-    }
-
+  #tempe {
+    background-image: none;
+  }
+  #hum {
+    background-image: none;
+  }
+  #windy {
+    background-image: none;
+  }
+  #press {
+    background-image: none;
+  }
+  #sky {
+    background-image: none;
+  }
 }
 
 /* Featurettes
