@@ -54,6 +54,22 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     // $("#temperature").html(html3);
 
 })
+
+    // google api for city images
+    // google apikey: AIzaSyDyFrSgv3HMm23BvZWe-w2po2yk3cHBLLM
+    // google apikey: AIzaSyAzBVMc18bXcw7jR0B0qWM6aa3CmbtEU4g
+var requestURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query="+city+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU&libraries=places";    
+$.getJSON(requestURL, function(test) {
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+  console.log(test);
+
+  
+})
+    
+
+
+
+
 });
 
 
