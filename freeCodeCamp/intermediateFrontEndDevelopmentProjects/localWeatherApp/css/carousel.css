@@ -67,7 +67,9 @@ body {
 .carousel-caption {
   padding-bottom: 0px;
 }
-
+.myCarousel {
+  background-color: #546231;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */

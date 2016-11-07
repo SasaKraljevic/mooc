@@ -1,8 +1,9 @@
 $(document).ready(function(){
-    //var city;
+    var city;
     var location;
-    //var lat;
-    //var lon;
+    var lat;
+    var lon;
+    var photoRef;
 /*
 // get user location
 $.get("http://ipinfo.io", function (response) {
@@ -21,16 +22,33 @@ $.get("http://ipinfo.io", function (response) {
     //$("#city2").html(JSON.stringify(response, null, 4));
 }, "jsonp")
 */
+
+// get user location
+/*
+// option 01: using city name to get weather later
 $.getJSON('https://freegeoip.net/json/' , function(data) {
-    console.log(data);
+    console.log("DATA: ", data);
     var city = data.city;
-    var country = data.country_name
+    var country = data.country_name;
     $("#city").html(city + ", " + country);
     console.log(city);
     console.log(country);
+*/
+
+// option 02: using latitude and longitude
+$.getJSON('https://freegeoip.net/json/' , function(data) {
+    console.log("DATA: ", data);
+    lat = data.latitude;
+    lon = data.longitude;
+    city = data.city;
+    $("#city").html(data.city + ", " + data.country_name);
+    console.log(lat);
+    console.log(lon);
 
 // get weather json info
-$.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=metric&APPID=8c0fc22e3317a7404e6791d841e9f602", function(val){
+// APPID: 8c0fc22e3317a7404e6791d841e9f602
+//api.openweathermap.org/data/2.5/weather?lat=35&lon=139
+$.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&APPID=8c0fc22e3317a7404e6791d841e9f602", function(val){
 //$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=8c0fc22e3317a7404e6791d841e9f602&units=metric", function(val){
     console.log("--------------");
     console.log("VAL: ", val);
@@ -59,14 +77,31 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     // google apikey: AIzaSyDyFrSgv3HMm23BvZWe-w2po2yk3cHBLLM
     // google apikey: AIzaSyAzBVMc18bXcw7jR0B0qWM6aa3CmbtEU4g
 var requestURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query="+city+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU&libraries=places";    
-$.getJSON(requestURL, function(test) {
+$.getJSON(requestURL, function(gPlace) {
   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-  console.log(test);
+  console.log("gPlace :", gPlace);
+  var gPlaceResults = gPlace.results;
+  console.log("gPlaceResults :", gPlaceResults); 
+  photoRef = gPlaceResults[0].photos[0].photo_reference;
+  console.log("photoRef :", photoRef);
+  //$("img").attr("src", photoRef.geturl);
+  // next line works for extra div at the end
+  $("body").css("background-image", 'url(' + "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU" + ')');
+  
+
+})
+
+   // trying to get a city photo 
+$.getJSON("https://crossorigin.me/https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU", function(getPhoto) {
+  //console.log("getPhoto :", getPhoto);
+  var photo = getPhoto;
+  console.log("!!!!!! :", photo);
+  //$("first-slide").attr("src", photoRef);
+  //$("#test").css("background-image", photo);
+  $('test').css('background-image', 'url(' + photo + ')');
+})
 
   
-})
-    
-
 
 
 
