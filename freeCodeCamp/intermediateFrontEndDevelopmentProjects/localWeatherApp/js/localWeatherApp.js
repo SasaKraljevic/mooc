@@ -4,6 +4,8 @@ $(document).ready(function(){
     var lat;
     var lon;
     var photoRef;
+    var tempC;
+    var tempF;
 /*
 // get user location
 $.get("http://ipinfo.io", function (response) {
@@ -34,14 +36,23 @@ $.getJSON('https://freegeoip.net/json/' , function(data) {
     console.log(city);
     console.log(country);
 */
-
+$("#fahrenheite").click(function() {
+  //$("#temp").remove(html);
+  $("#temp").html(tempF + " &#8457;"); 
+  return false;
+});
+$("#celsius").click(function() {
+  //$("#temp").remove(html);
+  $("#temp").html(tempC + " &#8451;"); 
+  return false;
+});
 // option 02: using latitude and longitude
 $.getJSON('https://freegeoip.net/json/' , function(data) {
     console.log("DATA: ", data);
     lat = data.latitude;
     lon = data.longitude;
     city = data.city;
-    $("#city").html(data.city + ", " + data.country_name);
+    $("#cityName").html(data.city + ", " + data.country_name);
     console.log(lat);
     console.log(lon);
 
@@ -55,21 +66,21 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
     console.log("CITY2: ", val.name);
     var weather = val.weather[0].main;
     var humidity = val.main.humidity + " &#37;";
-    var tempC = Math.floor(val.main.temp) + " &#8451;";
-    var tempF = Math.floor((tempC*1.8)+32); 
+    tempC = Math.floor(val.main.temp);
+    tempF = Math.floor((tempC*1.8)+32); 
     var icon = val.weather[0].icon;
     var wind = val.wind.speed;
     var pressure = Math.floor(val.main.pressure) + " hPa";
      
     //$("#city").html("Location: " + val.name); 
-    $("#temp").html(tempC); 
+    $("#temp").html(tempC + " &#8451;"); 
     $("#humidity").html(humidity); 
     $("#wind").html(wind + " m/s"); 
     $("#pressure").html(pressure);
     $("#weather").html(weather);
     $("#icon").attr("src", "http://openweathermap.org/img/w/"+icon+".png");
      
-    // $("#temperature").html(html3);
+    
 
 })
 
@@ -84,28 +95,16 @@ $.getJSON(requestURL, function(gPlace) {
   console.log("gPlaceResults :", gPlaceResults); 
   photoRef = gPlaceResults[0].photos[0].photo_reference;
   console.log("photoRef :", photoRef);
-  //$("img").attr("src", photoRef.geturl);
-  // next line works for extra div at the end
-  $("body").css("background-image", 'url(' + "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU" + ')');
-  
-
+  var photoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU";
+  $('.intro-header').css('background-image', 'url(' + photoUrl + ')');
 })
 
-   // trying to get a city photo 
-$.getJSON("https://crossorigin.me/https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU", function(getPhoto) {
-  //console.log("getPhoto :", getPhoto);
-  var photo = getPhoto;
-  console.log("!!!!!! :", photo);
-  //$("first-slide").attr("src", photoRef);
-  //$("#test").css("background-image", photo);
-  $('test').css('background-image', 'url(' + photo + ')');
-})
 
-  
 
 
 
 });
+
 
 
 });
