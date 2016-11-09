@@ -7,7 +7,6 @@ $(document).ready(function(){
     var tempC;
     var tempF;
 
-
 // get user location by latitude and longitude
 $.getJSON('https://freegeoip.net/json/' , function(data) {
     console.log("DATA: ", data);
@@ -37,22 +36,22 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
 // get city images using google places API
 var requestURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query="+city+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU&libraries=places";    
 $.getJSON(requestURL, function(gPlace) {
-  var gPlaceResults = gPlace.results;
-  photoRef = gPlaceResults[0].photos[0].photo_reference;
-  var photoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU";
-  $('.intro-header').css('background-image', 'url(' + photoUrl + ')');
+    var gPlaceResults = gPlace.results;
+    photoRef = gPlaceResults[0].photos[0].photo_reference;
+    var photoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference="+photoRef+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU";
+    $('.intro-header').css('background-image', 'url(' + photoUrl + ')');
 })
 
 });
 
 // change from celsius to fahrenheite
 $("#fahrenheite").click(function() {
-  $("#temp").html(tempF + " &#8457;"); 
-  return false;
+    $("#temp").html(tempF + " &#8457;"); 
+    return false;
 });
 $("#celsius").click(function() {
-  $("#temp").html(tempC + " &#8451;"); 
-  return false;
+    $("#temp").html(tempC + " &#8451;"); 
+    return false;
 });
 
 });
