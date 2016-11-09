@@ -1,0 +1,104 @@
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+body {
+  background-color: #1e202b;
+}
+
+.topnav {
+    font-size: 14px; 
+}
+.navbar-default {
+    background-color: #1e202b;
+    border-color: #323544;
+}
+.navbar-default .navbar-brand {
+    color: #009ad8;
+}
+button {
+  margin-right: 5px;
+}
+.btn-default {
+    color: #009ad8;
+    background-color: #1e202b;
+    border-color: #bfc1c8;
+}
+.btn:focus {
+    color: #009ad8;
+    background-color: #1e202b;
+    font-weight: bold;
+    border-color: #bfc1c8;
+}
+.btn:hover {
+    color: #009ad8;
+    background-color: #262936;
+    font-weight: bold;
+}
+
+#celsius {
+  margin-right: 5px;
+}
+
+.intro-header {
+    padding-top: 50px; 
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url() no-repeat center center;
+    background-size: cover;
+}
+.intro-message {
+    position: relative;
+    padding-top: 35%;
+    padding-bottom: 2%;
+}
+/* style weather data */
+.col-md-1 {
+    width: 5%;
+}
+.col-md-2 {
+    margin-bottom: 20px;
+    text-align: center; 
+    position: relative;
+    background-color: #262936;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 2.1em;
+    font-weight: bold;
+    color: #009ad8;
+    /*009ad8 beatuful blue color */
+    /*F05408 beatuful orange color */
+}
+h3 {
+  font-weight: bold;  
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #1e202b;
+}
+
