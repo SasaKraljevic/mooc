@@ -35,11 +35,26 @@ function makeFriendlyDates(arr) {
     11: "November",
     12: "December"
   };
-  //console.log(months);
+  
+  var startDaySuffix = '';
+  var endDaySuffix = '';
+  
   var startDate = arr[0].split("-");
     var startYear = parseInt(startDate[0]);
     var startMonth = parseInt(startDate[1]);
     var startDay = parseInt(startDate[2]);
+      if ( startDay == 1 ) {
+        startDaySuffix = 'st';
+      }
+      else if ( startDay == 2 ) {
+        startDaySuffix = 'nd';
+      }
+      else if ( startDay == 3 ) {
+        startDaySuffix = 'rd';
+      }
+      else if ( startDay >= 4 ) {
+        startDaySuffix = 'th';
+      }
     
     //console.log(parseInt(startDate[i]));
   
@@ -48,15 +63,20 @@ function makeFriendlyDates(arr) {
     var endMonth = parseInt(endDate[1]);
     var endDay = parseInt(endDate[2]);
   
-  // solution for same year, month and day
-  if (startYear == endYear && startMonth == endMonth && startDay == endDay) {
-    console.log( [months[endMonth].toString() + " " + startDay.toString(), endYear.toString()] );
+  // create suffix
+  // need to figure out that!!!
+  
+  // solution for same year
+  if (startYear == endYear) {
+    if (startMonth == endMonth && startDay == endDay) {
+    console.log( [months[endMonth].toString() + " " + startDay.toString() + startDaySuffix + "," + " " + endYear.toString()] );
+    }
+    // solution for same year and same month
+    if (startYear == endYear && startMonth == endMonth) {
+    console.log( [months[endMonth].toString() + " " + startDay.toString() + startDaySuffix + "," + " " + endDay.toString()] );
+  }
   }
   
-  // solution for same year and same month
-  if (startYear == endYear && startMonth == endMonth) {
-    console.log( [months[endMonth].toString() + " " + startDay.toString(), endDay.toString()] );
-  }
   //console.log(months[endMonth]);
   //console.log(startDate);
   //console.log(endDate);
