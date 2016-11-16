@@ -21,28 +21,19 @@ String.prototype.substr()
 parseInt()
 */
 function makeFriendlyDates(arr) {
-  var months = {
-    1: "January",
-    2: "February",
-    3: "Marth",
-    4: "April",
-    5: "May",
-    6: "June",
-    7: "July",
-    8: "August",
-    9: "September",
-    10: "October",
-    11: "November",
-    12: "December"
-  };
+  var monthNames = [
+  "January", "February", "March", "April", 
+  "May", "June", "July","August", 
+  "September", "October","November", "December"
+];
   
-  var startDaySuffix = '';
-  var endDaySuffix = '';
+  var startDaySuffix;
+  var endDaySuffix;
+  var range;
   
-  var startDate = arr[0].split("-");
-    var startYear = parseInt(startDate[0]);
-    var startMonth = parseInt(startDate[1]);
-    var startDay = parseInt(startDate[2]);
+  var startDate = new Date(arr[0]);
+    var startDay = startDate.getDate();
+      
       if ( startDay == 1 ) {
         startDaySuffix = 'st';
       }
@@ -52,36 +43,70 @@ function makeFriendlyDates(arr) {
       else if ( startDay == 3 ) {
         startDaySuffix = 'rd';
       }
-      else if ( startDay >= 4 ) {
+      else if ( startDay >= 4 || startDay <= 20 ) {
         startDaySuffix = 'th';
       }
-    
-    //console.log(parseInt(startDate[i]));
+/*      else if ( startDay >= 21 ) {
+        startDay = startDay.toString();
+        startDay = startDay[0].split();
+        console.log("START: ", startDay[0]);
+      }
+ */     
+      var startMonthIndex = startDate.getMonth();
+      var startYear = startDate.getFullYear();
+
+  var endDate = new Date(arr[1]);
+    var endDay = endDate.getDate();
+      if ( endDay == 1 ) {
+        endDaySuffix = 'st';
+      }
+      else if ( endDay == 2 ) {
+        endDaySuffix = 'nd';
+      }
+      else if ( endDay == 3 ) {
+        endDaySuffix = 'rd';
+      }
+      else if ( endDay >= 4 || endDay <= 20) {
+        endDaySuffix = 'th';
+      }
+      var endMonthIndex = endDate.getMonth();
+      var endYear = endDate.getFullYear();
   
-  var endDate = arr[1].split("-");
-    var endYear = parseInt(endDate[0]);
-    var endMonth = parseInt(endDate[1]);
-    var endDay = parseInt(endDate[2]);
-  
-  // create suffix
-  // need to figure out that!!!
-  
-  // solution for same year
-  if (startYear == endYear) {
-    if (startMonth == endMonth && startDay == endDay) {
-    console.log( [months[endMonth].toString() + " " + startDay.toString() + startDaySuffix + "," + " " + endYear.toString()] );
+// difference in days between the dates
+  var diff = Math.abs(endDate - startDate);
+    diff /= 24 * 60 * 60 * 1000;
+    //console.log(diff);
+
+// if diff < one year
+  if (diff < 364) {
+    if (startYear == endYear && monthNames[startMonthIndex] == monthNames[endMonthIndex] ) {
+    range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix, endDay + endDaySuffix] );
     }
-    // solution for same year and same month
-    if (startYear == endYear && startMonth == endMonth) {
-    console.log( [months[endMonth].toString() + " " + startDay.toString() + startDaySuffix + "," + " " + endDay.toString()] );
-  }
+
+    if (startYear == endYear && monthNames[startMonthIndex] != monthNames[endMonthIndex] ) {
+    range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix + ", " + startYear, monthNames[endMonthIndex] + " " + endDay + endDaySuffix] );
+    }
+    
+    if (endDate - startDate === 0 ) {
+      range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix + ", " +  startYear] );
+    }
+ 
+    if (startYear != endYear) {
+    range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix, monthNames[endMonthIndex] + " " + endDay + endDaySuffix] );
+    }
   }
   
-  //console.log(months[endMonth]);
-  //console.log(startDate);
-  //console.log(endDate);
-  //console.log("------------");
-  //return arr;
+// if diff > one year
+  if (diff > 364) {
+    range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix + ", " + startYear, monthNames[endMonthIndex] + " " + endDay + endDaySuffix + ", " + endYear] );
+  }
+  
+  if( diff === 364 ) {
+    range = ( [monthNames[startMonthIndex] + " " + startDay + startDaySuffix + ", " + startYear, monthNames[endMonthIndex] + " " + endDay + endDaySuffix ]);
+  }
+
+  
+  return range;
 }
 
 makeFriendlyDates(['2016-07-01', '2016-07-04']);
