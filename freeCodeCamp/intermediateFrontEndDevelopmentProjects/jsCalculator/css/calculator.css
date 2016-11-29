@@ -14,6 +14,11 @@ body {
 .form-control {
   height: 55px;
 }
+#name {
+  font-size: 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .btn-group, form-group {
   margin: 4px;
