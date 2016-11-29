@@ -3,7 +3,7 @@ body {
 }
 .container {
   width: 50%;
-  background: #ffffff;
+  background: #D8D8D8;
   margin-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
@@ -15,11 +15,13 @@ body {
   height: 55px;
 }
 #name {
-  font-size: 2em;
+  font-family: Arial;
+  font-size: 2.2em;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #888888;
+  text-shadow: 1px -2px 0px rgba(255,255,255,0.1);
 }
-
 
 .btn-group, form-group {
   margin: 4px;
@@ -53,7 +55,7 @@ body {
 }
 .btn-default {
     box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#fff;
+    background-color:#F0F0F0;
 }
 
 /* on/off button */
