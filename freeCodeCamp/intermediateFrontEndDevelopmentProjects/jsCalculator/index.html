@@ -19,13 +19,13 @@
     <![endif]-->
   </head>
   <body>
-    <div id="display" class="container">
+<div id="display" class="container">
    <div class="btn-group btn-group-justified">
-    <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
-  </div>
-       
+    <!--<input class="form-control" type="text" placeholder="0" readonly> -->
+     <input class="form-control" type="text" value="0">
+   </div>       
+</div>       
 </div>
-
 
 <div class="container">
 
@@ -41,11 +41,11 @@
       <!--<div class="text-right"><h1>JavaScript Calculator</h1></div>-->
       JavaScript Calculator
     </div>
-</div>
+  </div>
 
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default btn-lg btn3d">7</button>
+    <button id="seven" type="button" class="btn btn-default btn-lg btn3d">7</button>
   </div>
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default btn-lg btn3d">8</button>
@@ -57,7 +57,6 @@
     <button type="button" class="btn btn-default btn-lg btn3d">/</button>
   </div>
 </div>
-
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default btn-lg btn3d">4</button>
@@ -72,8 +71,7 @@
     <button type="button" class="btn btn-default btn-lg btn3d">*</button>
   </div>
 </div>
-
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default btn-lg btn3d">1</button>
   </div>
@@ -87,8 +85,7 @@
     <button type="button" class="btn btn-default btn-lg btn3d">-</button>
   </div>
 </div>
-
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <button id="c" type="button" class="btn btn-default btn-lg btn3d">C</button>
   </div>
@@ -102,11 +99,12 @@
     <button type="button" class="btn btn-default btn-lg btn3d"><strong>+</strong></button>
   </div>
 </div>
-
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     <button id="result" type="button" class="btn btn-default btn-lg btn3d">=</button>
   </div>
+
+
 </div>
   
 </div> <!-- ./container -->
@@ -115,5 +113,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jsCalculator.js"></script>
   </body>
 </html>

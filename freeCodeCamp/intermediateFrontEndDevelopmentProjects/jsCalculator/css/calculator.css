@@ -11,6 +11,11 @@ body {
 #display {
   height: 70px;
 }
+input[type="text"] {
+  font-family: Monospace;
+  font-size: 300%;
+  text-align: right;  
+}
 .form-control {
   height: 55px;
 }
