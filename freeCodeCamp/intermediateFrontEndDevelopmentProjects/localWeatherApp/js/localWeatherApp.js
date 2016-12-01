@@ -16,7 +16,10 @@ $.getJSON('https://freegeoip.net/json/' , function(data) {
     $("#cityName").html(data.city + ", " + data.country_name);
 
 // get weather json info using openweathermap API
-$.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&APPID=8c0fc22e3317a7404e6791d841e9f602", function(val){
+// if 'https://crossorigin.me/' is down, use 'https://cors-anywhere.herokuapp.com/' as a prefix
+// https://cors-anywhere.herokuapp.com/
+$.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&APPID=8c0fc22e3317a7404e6791d841e9f602", function(val){
+  console.log("VAL :", val);
     var weather = val.weather[0].main;
     var humidity = val.main.humidity + " &#37;";
     tempC = Math.floor(val.main.temp);
@@ -34,7 +37,9 @@ $.getJSON("https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather
 })
 
 // get city images using google places API
-var requestURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query="+city+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU&libraries=places";    
+// if 'https://crossorigin.me/' is down, use 'https://cors-anywhere.herokuapp.com/' as a prefix
+// https://cors-anywhere.herokuapp.com/
+var requestURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query="+city+"&key=AIzaSyCXPVripDPRjxgFo1okQjjrZjlAJBXKgUU&libraries=places";    
 $.getJSON(requestURL, function(gPlace) {
     var gPlaceResults = gPlace.results;
     photoRef = gPlaceResults[0].photos[0].photo_reference;
