@@ -3,12 +3,14 @@ $(document).ready(function(){
   var off = true;
 ///////////////////////////////////////
   
-var value = $("input").attr('value');
-  console.log("VALUE :", value);
-$(".btn3d").on("click", function() {
-  var value = $("input").attr('value');
-  value = $("#seven").text();
-  $("input").attr('value', value);
+var currValue = "";
+$('button').on('click', function () {
+  
+  var value = this.id;
+  console.log(value);
+  currValue += value;
+  console.log(currValue);
+  $("input").attr('value', currValue);
 });
 
 // C button function
