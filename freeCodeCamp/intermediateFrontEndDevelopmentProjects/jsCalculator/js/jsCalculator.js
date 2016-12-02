@@ -11,6 +11,12 @@ $(".btn3d").on("click", function() {
   $("input").attr('value', value);
 });
 
+// C button function
+$("#c").on("click", function() {
+  value = 0;
+  $("input").attr('value', value);
+});
+
 //$(".btn3d").on("click", function() {
  //   value = $(".btn3d").text(); //$(".btn3d").text($(this).val());
     
