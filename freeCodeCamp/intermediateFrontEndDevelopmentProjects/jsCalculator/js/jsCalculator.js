@@ -5,16 +5,29 @@ $(document).ready(function(){
   var on = false;
   var off = true;
 ///////////////////////////////////////
-  
 
+  
 $('button').on('click', function () {
   
   value = this.id;
   console.log("value :", value);
   if(this.id !== 'result' && this.id !== 'c') {
-    currValue += value;
-    console.log(currValue);
+    //currValue += value;
+    ///////////////////
+    // allow only one decimal point
+    if(this.id === '.') {
+      if (currValue.indexOf('.') === -1) {
+        currValue += value;
+      }
+    }
+    else {
+      currValue += value;
+    }
+    ///////////////////
+
+    console.log("!!!!! :", currValue.length);
   }
+  
   $("input").attr('value', currValue);
 });
 
@@ -38,6 +51,3 @@ $("#result").on("click", function() {
  //   value = $(".btn3d").text(); //$(".btn3d").text($(this).val());
     
 });
-
-
-  
