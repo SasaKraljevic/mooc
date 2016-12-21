@@ -1,12 +1,19 @@
 var currValue = "";
 var value = "";
+//$(':button').prop('disabled', true);
 
 $(document).ready(function(){
+  $(':button').prop('disabled', true);
   var on = false;
   var off = true;
 ///////////////////////////////////////
+$('input').click(function ()  {
+    $(':button').prop('disabled', false);
+    currValue = 0;
+    //$(":button").off('click'); 
+  });
 
-  
+   
 $('button').on('click', function () {
   
   value = this.id;
@@ -47,7 +54,6 @@ $("#result").on("click", function() {
   $("input").attr('value', value);
 });
 
-//$(".btn3d").on("click", function() {
- //   value = $(".btn3d").text(); //$(".btn3d").text($(this).val());
+
     
 });

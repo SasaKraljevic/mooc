@@ -20,15 +20,17 @@
   </head>
 
   <body>
+    <!-- calculator display -->
     <div id="display" class="container">
       <div class="btn-group btn-group-justified">
       <!--<input class="form-control" type="text" placeholder="0" readonly> -->
-        <input class="form-control" type="text" value="0">
+        <input class="form-control" type="text" value="" maxlength="10">
       </div>       
-    </div>       
+    </div> <!-- ./calculator display -->       
 
     <div class="container">
 
+      <!-- on/off button and heading  -->
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">    
           <button class="toggle">
@@ -41,73 +43,75 @@
         <!--<div class="text-right"><h1>JavaScript Calculator</h1></div>-->
           JavaScript Calculator
         </div>
-      </div>
+      </div> <!-- ./on/off button and heading  -->
 
+      <!-- buttons -->
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <button id="7" type="button" class="btn btn-default btn-lg btn3d">7</button>
+          <button id="7" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="7">7</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="8" type="button" class="btn btn-default btn-lg btn3d">8</button>
+          <button id="8" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="8">8</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="9" type="button" class="btn btn-default btn-lg btn3d">9</button>
+          <button id="9" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="9">9</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="/" type="button" class="btn btn-default btn-lg btn3d">/</button>
-        </div>
-      </div>
-
-      <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-          <button id="4" type="button" class="btn btn-default btn-lg btn3d">4</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="5" type="button" class="btn btn-default btn-lg btn3d">5</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="6" type="button" class="btn btn-default btn-lg btn3d">6</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="*" type="button" class="btn btn-default btn-lg btn3d">*</button>
+          <button id="/" type="button" class="btn btn-default btn-lg btn3d operator" data-value="divide">/</button>
         </div>
       </div>
 
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <button id="1" type="button" class="btn btn-default btn-lg btn3d">1</button>
+          <button id="4" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="4">4</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="2" type="button" class="btn btn-default btn-lg btn3d">2</button>
+          <button id="5" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="5">5</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="3" type="button" class="btn btn-default btn-lg btn3d">3</button>
+          <button id="6" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="6">6</button>
         </div>
         <div class="btn-group" role="group">
-          <button id="-" type="button" class="btn btn-default btn-lg btn3d">-</button>
-        </div>
-      </div>
-
-      <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-          <button id="c" type="button" class="btn btn-default btn-lg btn3d">C</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="0" type="button" class="btn btn-default btn-lg btn3d">0</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="." type="button" class="btn btn-default btn-lg btn3d">.</button>
-        </div>
-        <div class="btn-group" role="group">
-          <button id="+" type="button" class="btn btn-default btn-lg btn3d"><strong>+</strong></button>
+          <button id="*" type="button" class="btn btn-default btn-lg btn3d operator" data-value="multiply">*</button>
         </div>
       </div>
 
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <button id="result" type="button" class="btn btn-default btn-lg btn3d">=</button>
+          <button id="1" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="1">1</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="2" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="2">2</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="3" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="3">3</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="-" type="button" class="btn btn-default btn-lg btn3d operator" data-value="subtract">-</button>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button id="c" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="0">C</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="0" type="button" class="btn btn-default btn-lg btn3d numButton" data-value="0">0</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="." type="button" class="btn btn-default btn-lg btn3d operator" data-value=".">.</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button id="+" type="button" class="btn btn-default btn-lg btn3d operator" data-value="add"><strong>+</strong></button>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button id="result" type="button" class="btn btn-default btn-lg btn3d operator" data-value="equal">=</button>
         </div>
      </div>
+      <!-- ./buttons  -->
   
     </div> <!-- ./container -->
 
