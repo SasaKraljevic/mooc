@@ -1,6 +1,6 @@
 var currValue = "";
 var value = "";
-//$(':button').prop('disabled', true);
+
 
 $(document).ready(function(){
   $(':button').prop('disabled', true);
@@ -8,9 +8,17 @@ $(document).ready(function(){
   var off = true;
 ///////////////////////////////////////
 $('input').click(function ()  {
+  var clicks = $(this).data('clicks');
+  
+  if (clicks) {
+    $(':button').prop('disabled', true);
+      currValue = '';
+    } else {
     $(':button').prop('disabled', false);
-    currValue = 0;
-    //$(":button").off('click'); 
+    currValue = '0';
+    } 
+    
+  $(this).data("clicks", !clicks);
   });
 
    
@@ -20,6 +28,7 @@ $('button').on('click', function () {
   console.log("value :", value);
   if(this.id !== 'result' && this.id !== 'c') {
     //currValue += value;
+    
     ///////////////////
     // allow only one decimal point
     if(this.id === '.') {
