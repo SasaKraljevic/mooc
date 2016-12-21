@@ -1,7 +1,6 @@
 var currValue = "";
 var value = "";
 
-
 $(document).ready(function(){
   $(':button').prop('disabled', true);
   var on = false;
@@ -12,10 +11,14 @@ $('input').click(function ()  {
   
   if (clicks) {
     $(':button').prop('disabled', true);
-      currValue = '';
+    //$('input').prop('value', '');
+    currValue = '';
+    $("input").attr('value', currValue);
+    
     } else {
     $(':button').prop('disabled', false);
     currValue = '0';
+    $("input").attr('value', currValue);
     } 
     
   $(this).data("clicks", !clicks);
