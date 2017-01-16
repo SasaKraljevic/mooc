@@ -1,6 +1,7 @@
 body {
   background: #1a1a1a;
 }
+
 .container {
   width: 50%;
   background: #D8D8D8;
@@ -8,18 +9,19 @@ body {
   padding-bottom: 20px;
   border-radius: 10px;
 }
+
 #display {
   height: 70px;
-}
-input[type="text"] {
   font-family: Monospace;
   /*font-size: 300%;*/
   font-size: 3vw;
   text-align: right;  
 }
+
 .form-control {
   height: 55px;
 }
+
 #name {
   font-family: Arial;
   font-size: 2.2em;
@@ -34,14 +36,16 @@ input[type="text"] {
   padding: 2px;
 }
 
-#c {
+#clear {
   background: #b51102;
   /* b51102, ff1e00 */ 
 }
-#result {
+
+#equals {
   background: #006006;
   /*006006, 008309  */ 
 }
+
 /* make 3d button effect */
 .btn3d {
     transition:all .08s linear;
@@ -56,9 +60,11 @@ input[type="text"] {
     outline:medium none;
     -moz-outline-style:none;
 }
+
 .btn3d:active {
     top:9px;
 }
+
 .btn-default {
     box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
     background-color:#F0F0F0;
