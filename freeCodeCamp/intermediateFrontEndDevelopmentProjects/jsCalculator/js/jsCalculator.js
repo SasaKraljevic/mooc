@@ -2,21 +2,22 @@ var currValue = "";
 var value = "";
 
 $(document).ready(function(){
-  $(':button').prop('disabled', true);
+  $('button').not('.onoff').prop('disabled', true);
   var on = false;
   var off = true;
 ///////////////////////////////////////
-$('input').click(function ()  {
+//$('input').click(function ()  {
+$('.onoff').click(function ()  {
   var clicks = $(this).data('clicks');
   
   if (clicks) {
-    $(':button').prop('disabled', true);
+    $('button').not('.onoff').prop('disabled', true);
     //$('input').prop('value', '');
     currValue = '';
     $("input").attr('value', currValue);
     
     } else {
-    $(':button').prop('disabled', false);
+    $('button').not('.onoff').prop('disabled', false);
     currValue = '0';
     $("input").attr('value', currValue);
     } 
