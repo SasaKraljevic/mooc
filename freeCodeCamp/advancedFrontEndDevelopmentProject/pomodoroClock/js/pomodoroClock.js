@@ -37,3 +37,14 @@ function startTimer() {
 }
 
 buttons.forEach(button => button.addEventListener('click', startTimer, false));
+
+function decrementBreak() {
+	var value = parseInt(document.getElementById('break').value);
+	value = isNaN(value) ? 0 : value;
+	value--;
+	document.getElementById('break').value = value;
+	//document.getElementById("breakMinus").addEventListener('click',)
+}
+
+
+
