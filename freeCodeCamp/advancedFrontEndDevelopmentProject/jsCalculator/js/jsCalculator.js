@@ -103,10 +103,17 @@ $(document).ready(function(){
   
   // calculate
   $("#equals").click(function(){
-    
+
     total = calculate(newNumber, number, operator);
-    
-    if (total % 1 !== 0) {
+
+    if(total === Infinity) {
+      total = 'Wrong input';
+      $("#display").text(total);
+      newNumber = '';
+      number = '';
+      operator = '';
+    }
+    else if (total % 1 !== 0) {
       total = total.toFixed(4);
       $("#display").text(total);
       newNumber = total;
@@ -117,7 +124,7 @@ $(document).ready(function(){
       newNumber = total;
       number = '';
       operator = '';
-      }
+    }
   });
   
   

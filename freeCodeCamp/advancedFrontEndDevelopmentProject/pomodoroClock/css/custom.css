@@ -1,0 +1,72 @@
+body {
+	/*background-color: #9d9d9d;*/
+	background-color: #222;
+	/*background-color: #080808;*/
+	/*background-color: #333;*/
+	/*background-color: #101010;*/
+	/*background-color: #337ab7;*/
+}
+
+#breakGroup, #sessionGroup {
+    width: 20%;
+    margin-left:auto;
+	margin-right:auto;
+}
+
+#breakName {
+    text-align: center;
+    padding-top: 10px;
+    color: #9d9d9d;
+}
+
+#sessionName {
+    text-align: center;
+    padding-top: 10px;
+    color: #9d9d9d;
+}
+
+input {
+	text-align: center;
+}
+
+.commands {
+	text-align: center;
+}
+
+.btn-success {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}
+.btn-success:hover {
+    background-color: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+.btn-warning {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}
+.btn-warning:hover {
+    background-color: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+.display__time-left {
+	font-size: 15rem;
+}
+

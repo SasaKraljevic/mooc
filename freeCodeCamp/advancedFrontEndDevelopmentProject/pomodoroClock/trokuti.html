@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<!-- https://css-tricks.com/snippets/css/css-triangle/ -->
+<style>
+#arrow-up {
+  position: relative;
+  width: 10px; 
+  height: 250px; 
+  border-left: 250px solid transparent;
+  border-right: 250px solid transparent;
+  background-color: #415F50;
+  border-bottom: 250px solid black;
+}
+#arrowBarUp {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  border-left: 250px solid transparent;
+  border-right: 250px solid transparent;
+  background-color: #415F50;
+  border-bottom: 250px solid blue;
+}
+
+</style>
+<body>
+
+<div id="arrow-up">
+  <div id="arrowBarUp"></div>
+</div>
+
+
+<br>
+<button onclick="move()">Click Me</button> 
+
+<script>
+function move() {
+  var elem = document.getElementById("arrowBarUp");   
+  var height = 0;
+  var id = setInterval(frame, 50);
+  function frame() {
+    if (height >= 100) {
+      clearInterval(id);
+    } else {
+      height++; 
+      elem.style.border-bottom-width = height + 'px'; 
+    }
+  }
+}
+</script>
+
+</body>
+</html>
