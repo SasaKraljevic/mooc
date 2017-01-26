@@ -46,5 +46,28 @@ function decrementBreak() {
 	//document.getElementById("breakMinus").addEventListener('click',)
 }
 
+function incrementBreak() {
+	var value = parseInt(document.getElementById('break').value);
+	value = isNaN(value) ? 0 : value;
+	value++;
+	document.getElementById('break').value = value;
+	//document.getElementById("breakMinus").addEventListener('click',)
+}
+
+function decrementSession() {
+  var value = parseInt(document.getElementById('session').value);
+  value = isNaN(value) ? 0 : value;
+  value--;
+  document.getElementById('session').value = value;
+  //document.getElementById("breakMinus").addEventListener('click',)
+}
+
+function incrementSession() {
+  var value = parseInt(document.getElementById('session').value);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById('session').value = value;
+  //document.getElementById("breakMinus").addEventListener('click',)
+}
 
 
