@@ -2,7 +2,6 @@ let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
 const buttons = document.querySelectorAll('[data-time]');
 
-
 function timer(seconds) {
   // clear any existing timers
   clearInterval(countdown);
@@ -43,7 +42,6 @@ function decrementBreak() {
 	value = isNaN(value) ? 0 : value;
 	value--;
 	document.getElementById('break').value = value;
-	//document.getElementById("breakMinus").addEventListener('click',)
 }
 
 function incrementBreak() {
@@ -51,7 +49,6 @@ function incrementBreak() {
 	value = isNaN(value) ? 0 : value;
 	value++;
 	document.getElementById('break').value = value;
-	//document.getElementById("breakMinus").addEventListener('click',)
 }
 
 function decrementSession() {
@@ -59,7 +56,6 @@ function decrementSession() {
   value = isNaN(value) ? 0 : value;
   value--;
   document.getElementById('session').value = value;
-  //document.getElementById("breakMinus").addEventListener('click',)
 }
 
 function incrementSession() {
@@ -67,7 +63,14 @@ function incrementSession() {
   value = isNaN(value) ? 0 : value;
   value++;
   document.getElementById('session').value = value;
-  //document.getElementById("breakMinus").addEventListener('click',)
 }
 
+//trouble making
+function stop() {
+  if(clearInterval(countdown)) {
+
+  };
+
+  //$('.glyphicon-pause').toggleClass('glyphicon-pause glyphicon-refresh');
+  }
 
