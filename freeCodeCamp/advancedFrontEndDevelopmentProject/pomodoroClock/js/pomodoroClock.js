@@ -31,7 +31,7 @@ function timer(seconds) {
   // progress bar
   var fullBarWidth = document.getElementById('progress').offsetWidth;
   //console.log("fullBarWidth :", fullBarWidth);
-  var pxToFill = fullBarWidth / sessionTime;
+  var pxToFill = fullBarWidth / seconds;
   console.log("pxToFill :", pxToFill);
   var progression = pxToFill;
   progress = setInterval(function() {
@@ -102,6 +102,8 @@ function reset() {
   timerDisplay.textContent = '25:00';
   clearInterval(countdown);
   clearInterval(progress);
+  //$('#progressBar').css({'width': '0px'});
+  document.getElementById('progressBar').style.width = '0px';
   document.getElementById('session').value = 25;
   document.getElementById('break').value = 5;
 }
