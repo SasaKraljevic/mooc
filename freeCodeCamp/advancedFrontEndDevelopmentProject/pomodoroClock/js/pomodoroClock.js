@@ -1,18 +1,23 @@
 let countdown;
+let progress;
 const timerDisplay = document.querySelector('.display__time-left');
 const buttons = document.querySelectorAll('[data-time]');
+let sessionTime;
+
 
 function timer(seconds) {
   // clear any existing timers
   clearInterval(countdown);
-
+  clearInterval(progress);
+ 
   const now = Date.now();
   const then = now + seconds * 1000;
   displayTimeLeft(seconds);
-
+  //console.log("displayTimeLeft", displayTimeLeft(seconds));
 
   countdown = setInterval(() => {
-    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    secondsLeft = Math.round((then - Date.now()) / 1000);
+    
     // check if we should stop it!
     if(secondsLeft < 0) {
       clearInterval(countdown);
@@ -20,7 +25,26 @@ function timer(seconds) {
     }
     // display it
     displayTimeLeft(secondsLeft);
+   
   }, 1000);
+
+  // progress bar
+  var fullBarWidth = document.getElementById('progress').offsetWidth;
+  //console.log("fullBarWidth :", fullBarWidth);
+  var pxToFill = fullBarWidth / sessionTime;
+  console.log("pxToFill :", pxToFill);
+  var progression = pxToFill;
+  progress = setInterval(function() {
+    $('#progressBar').css({'width': progression + 'px'});
+    if(progression > fullBarWidth) {
+      clearInterval(progress);
+    } else {
+      progression += pxToFill;
+      console.log("progression", progression);
+    }
+  }, 1000);
+
+  /////////////////////////////////
 }
 
 function displayTimeLeft(seconds) {
@@ -28,6 +52,7 @@ function displayTimeLeft(seconds) {
   const remainderSeconds = seconds % 60;
   const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
   timerDisplay.textContent = display;
+  //console.log("seconds", seconds);
 }
 
 function startTimer() {
@@ -35,6 +60,7 @@ function startTimer() {
   timer(seconds);
 }
 
+// predefined values: 15, 30, 45, 60
 buttons.forEach(button => button.addEventListener('click', startTimer, false));
 
 function decrementBreak() {
@@ -67,10 +93,24 @@ function incrementSession() {
 
 //trouble making
 function stop() {
-  if(clearInterval(countdown)) {
+  clearInterval(countdown);
+  clearInterval(progress);
+}
 
-  };
+function reset() {
+  //document.getElementsByClassName('display__time-left').innerHTML = '25:00';
+  timerDisplay.textContent = '25:00';
+  clearInterval(countdown);
+  clearInterval(progress);
+  document.getElementById('session').value = 25;
+  document.getElementById('break').value = 5;
+}
 
-  //$('.glyphicon-pause').toggleClass('glyphicon-pause glyphicon-refresh');
-  }
+function start() {
+  sessionTime = document.getElementById('session').value;
+  sessionTime *= 60;
+  document.getElementById('session').dataset.time = sessionTime;
+  timer(sessionTime);
+  //console.log("sessionTime :", sessionTime);
+}
 

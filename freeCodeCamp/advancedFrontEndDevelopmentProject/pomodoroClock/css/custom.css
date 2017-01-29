@@ -152,3 +152,10 @@ a {
 	font-size: 15rem;
 }
 
+#progress {
+  position: relative;
+}
+
+#progressBar {
+  position: absolute;
+}
