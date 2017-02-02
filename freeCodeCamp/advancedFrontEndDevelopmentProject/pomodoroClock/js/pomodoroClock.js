@@ -28,7 +28,7 @@ function timer(seconds) {
    
   }, 1000);
 
-  // progress bar
+  // progress bar for session
   var fullBarWidth = document.getElementById('progress').offsetWidth;
   //console.log("fullBarWidth :", fullBarWidth);
   var pxToFill = fullBarWidth / seconds;
@@ -44,7 +44,7 @@ function timer(seconds) {
     }
   }, 1000);
 
-  /////////////////////////////////
+  ////////.progress bar for session/////////////
 }
 
 function displayTimeLeft(seconds) {
