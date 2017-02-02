@@ -3,6 +3,7 @@ let progress;
 const timerDisplay = document.querySelector('.display__time-left');
 const buttons = document.querySelectorAll('[data-time]');
 let sessionTime;
+let breakTime;
 
 
 function timer(seconds) {
@@ -25,6 +26,11 @@ function timer(seconds) {
     }
     // display it
     displayTimeLeft(secondsLeft);
+  ////////.progress bar for session/////////////
+  if(secondsLeft === 0) {
+    breakSession();
+  }
+  // progress bar for break
    
   }, 1000);
 
@@ -44,7 +50,7 @@ function timer(seconds) {
     }
   }, 1000);
 
-  ////////.progress bar for session/////////////
+
 }
 
 function displayTimeLeft(seconds) {
@@ -111,8 +117,15 @@ function reset() {
 function start() {
   sessionTime = document.getElementById('session').value;
   sessionTime *= 60;
-  document.getElementById('session').dataset.time = sessionTime;
+  //document.getElementById('session').dataset.time = sessionTime;
   timer(sessionTime);
   //console.log("sessionTime :", sessionTime);
+}
+
+function breakSession() {
+  breakTime = document.getElementById('break').value;
+  breakTime *= 60;
+  timer(breakTime);
+
 }
 
