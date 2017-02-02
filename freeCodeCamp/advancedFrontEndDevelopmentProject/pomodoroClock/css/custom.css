@@ -159,3 +159,7 @@ a {
 #progressBar {
   position: absolute;
 }
+
+.progress-bar {
+  background-color: #b3b3b3;
+}

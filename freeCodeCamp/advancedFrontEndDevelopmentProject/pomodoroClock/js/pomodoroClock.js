@@ -25,13 +25,7 @@ function timer(seconds) {
       return;
     }
     // display it
-    displayTimeLeft(secondsLeft);
-  ////////.progress bar for session/////////////
-  if(secondsLeft === 0) {
-    breakSession();
-  }
-  // progress bar for break
-   
+    displayTimeLeft(secondsLeft);   
   }, 1000);
 
   // progress bar for session
@@ -49,6 +43,11 @@ function timer(seconds) {
       console.log("progression", progression);
     }
   }, 1000);
+    ////////.progress bar for session/////////////
+    
+  if(secondsLeft === 0) {
+    breakSession();
+  }
 
 
 }
