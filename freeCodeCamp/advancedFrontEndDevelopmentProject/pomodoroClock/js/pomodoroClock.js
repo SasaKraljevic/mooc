@@ -5,7 +5,6 @@ const buttons = document.querySelectorAll('[data-time]');
 let sessionTime;
 let breakTime;
 
-
 function timer(seconds) {
   // clear any existing timers
   clearInterval(countdown);
@@ -15,17 +14,16 @@ function timer(seconds) {
   const then = now + seconds * 1000;
   displayTimeLeft(seconds);
   //console.log("displayTimeLeft", displayTimeLeft(seconds));
-
   countdown = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     
     // check if we should stop it!
     if(secondsLeft < 0) {
       clearInterval(countdown);
-      return;
+      breakSession();
     }
     // display it
-    displayTimeLeft(secondsLeft);   
+    displayTimeLeft(secondsLeft);
   }, 1000);
 
   // progress bar for session
@@ -44,12 +42,6 @@ function timer(seconds) {
     }
   }, 1000);
     ////////.progress bar for session/////////////
-    
-  if(secondsLeft === 0) {
-    breakSession();
-  }
-
-
 }
 
 function displayTimeLeft(seconds) {
@@ -121,10 +113,65 @@ function start() {
   //console.log("sessionTime :", sessionTime);
 }
 
+
+
+
+// break timer and progress bar
 function breakSession() {
+  // clear any existing timers
+  clearInterval(countdown);
+  clearInterval(progress);
+
   breakTime = document.getElementById('break').value;
   breakTime *= 60;
-  timer(breakTime);
 
+  timer(breakTime);
+ 
+  //const now = Date.now();
+  //const then = now + seconds * 1000;
+  displayTimeLeft(breakTime);
+  //console.log("displayTimeLeft", displayTimeLeft(seconds));
+  countdown = setInterval(() => {
+    secondsLeft = Math.round((then - Date.now()) / 1000);
+    
+    // check if we should stop it!
+    if(secondsLeft < 0) {
+      clearInterval(countdown);
+      return;
+    }
+    // display it
+    displayTimeLeft(secondsLeft);
+  }, 1000);
+
+  // progress bar for session
+  var fullBarWidth = document.getElementById('progress').offsetWidth;
+  //console.log("fullBarWidth :", fullBarWidth);
+  var pxToFill = fullBarWidth / seconds;
+  console.log("pxToFill :", pxToFill);
+  var progression = pxToFill;
+  progress = setInterval(function() {
+    $('#progressBar').css({'width': progression + 'px'});
+    if(progression > fullBarWidth) {
+      clearInterval(progress);
+    } else {
+      progression += pxToFill;
+      console.log("progression", progression);
+    }
+  }, 1000);
+    ////////.progress bar for session/////////////
 }
 
+
+
+/*
+  timer(breakTime);
+}
+    if(secondsLeft === 0) {
+      breakSession();
+      if(secondsLeft === 0) {
+        clearInterval(countdown);
+        clearInterval(progress);
+        return;
+      }
+    } 
+*/
