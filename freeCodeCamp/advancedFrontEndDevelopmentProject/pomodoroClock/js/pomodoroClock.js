@@ -1,4 +1,5 @@
 let countdown;
+let countdownBreak;
 let progress;
 const timerDisplay = document.querySelector('.display__time-left');
 const buttons = document.querySelectorAll('[data-time]');
@@ -8,6 +9,7 @@ let breakTime;
 function timer(seconds) {
   // clear any existing timers
   clearInterval(countdown);
+  clearInterval(countdownBreak);
   clearInterval(progress);
  
   const now = Date.now();
@@ -16,28 +18,22 @@ function timer(seconds) {
   //console.log("displayTimeLeft", displayTimeLeft(seconds));
   countdown = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
-    
     // check if we should stop it!
-    if(secondsLeft < 0) {
+    if(secondsLeft === 0) {
       clearInterval(countdown);
       clearInterval(progress);
       breakTimer();
-   /*   breakTime = document.getElementById('break').value;
-      breakTime *= 60;
-
-      timer(breakTime);*/
     }
-    // display it
+    // display timer
     displayTimeLeft(secondsLeft);
-
   }, 1000);
 
-  // progress bar for session
+  // progress bar for session timer
   var fullBarWidth = document.getElementById('progress').offsetWidth;
   //console.log("fullBarWidth :", fullBarWidth);
   var pxToFill = fullBarWidth / seconds;
   console.log("pxToFill :", pxToFill);
-  var progression = pxToFill;
+  var progression = pxToFill * 2;
   progress = setInterval(function() {
     $('#progressBar').css({'width': progression + 'px'});
     if(progression > fullBarWidth) {
@@ -47,9 +43,7 @@ function timer(seconds) {
       console.log("progression", progression);
     }
   }, 1000);
-    ////////.progress bar for session/////////////
-
-
+  ////////.progress bar for session timer ///////////
 }
 
 function displayTimeLeft(seconds) {
@@ -96,37 +90,38 @@ function incrementSession() {
   document.getElementById('session').value = value;
 }
 
-//trouble making
 function stop() {
   clearInterval(countdown);
   clearInterval(progress);
+  clearInterval(countdownBreak);
 }
 
 function reset() {
-  //document.getElementsByClassName('display__time-left').innerHTML = '25:00';
   timerDisplay.textContent = '25:00';
   clearInterval(countdown);
   clearInterval(progress);
-  //$('#progressBar').css({'width': '0px'});
+  clearInterval(countdownBreak);
+
   document.getElementById('progressBar').style.width = '0px';
   document.getElementById('session').value = 25;
   document.getElementById('break').value = 5;
 }
 
 function start() {
+  clearInterval(countdown);
+  clearInterval(countdownBreak);
+  clearInterval(progress);
+  
   sessionTime = document.getElementById('session').value;
   sessionTime *= 60;
-  //document.getElementById('session').dataset.time = sessionTime;
   timer(sessionTime);
-  //console.log("sessionTime :", sessionTime);
 }
 
 
 
 
-// break timer and progress bar
+// break timer and progress bar for break timer
 function breakTimer() {
-  // clear any existing timers
   clearInterval(countdown);
   clearInterval(progress);
 
@@ -140,46 +135,28 @@ function breakTimer() {
   countdownBreak = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     
-    // check if we should stop it!
-    if(secondsLeft < 0) {
+    if(secondsLeft === 0) {
       clearInterval(countdownBreak);
       clearInterval(progress);
       timer(sessionTime);
     }
-    // display it
+    // display timer
     displayTimeLeft(secondsLeft);
   }, 1000);
 
-  // progress bar for session
+  // progress bar for break timer
   var fullBarWidth = document.getElementById('progress').offsetWidth;
   //console.log("fullBarWidth :", fullBarWidth);
   var pxToFill = fullBarWidth / breakTime;
   console.log("pxToFill :", pxToFill);
-  var progression = pxToFill;
+  var progression = fullBarWidth - pxToFill;
   progress = setInterval(function() {
     $('#progressBar').css({'width': progression + 'px'});
-    if(progression > fullBarWidth) {
+    if(progression < 0) {
       clearInterval(progress);
     } else {
-      progression += pxToFill;
+      progression -= pxToFill;
       console.log("progression", progression);
     }
-  }, 1000);
-    ////////.progress bar for session/////////////
-    
+  }, 1000); 
 }
-
-
-
-/*
-  timer(breakTime);
-}
-    if(secondsLeft === 0) {
-      breakSession();
-      if(secondsLeft === 0) {
-        clearInterval(countdown);
-        clearInterval(progress);
-        return;
-      }
-    } 
-*/
