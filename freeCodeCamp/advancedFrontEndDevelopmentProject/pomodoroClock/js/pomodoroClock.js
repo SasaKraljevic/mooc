@@ -117,10 +117,7 @@ function start() {
   timer(sessionTime);
 }
 
-
-
-
-// break timer and progress bar for break timer
+// break timer
 function breakTimer() {
   clearInterval(countdown);
   clearInterval(progress);
