@@ -20,10 +20,16 @@ function timer(seconds) {
     // check if we should stop it!
     if(secondsLeft < 0) {
       clearInterval(countdown);
-      breakSession();
+      clearInterval(progress);
+      breakTimer();
+   /*   breakTime = document.getElementById('break').value;
+      breakTime *= 60;
+
+      timer(breakTime);*/
     }
     // display it
     displayTimeLeft(secondsLeft);
+
   }, 1000);
 
   // progress bar for session
@@ -42,6 +48,8 @@ function timer(seconds) {
     }
   }, 1000);
     ////////.progress bar for session/////////////
+
+
 }
 
 function displayTimeLeft(seconds) {
@@ -117,27 +125,26 @@ function start() {
 
 
 // break timer and progress bar
-function breakSession() {
+function breakTimer() {
   // clear any existing timers
   clearInterval(countdown);
   clearInterval(progress);
 
   breakTime = document.getElementById('break').value;
   breakTime *= 60;
-
-  timer(breakTime);
  
-  //const now = Date.now();
-  //const then = now + seconds * 1000;
+  const now = Date.now();
+  const then = now + breakTime * 1000;
   displayTimeLeft(breakTime);
   //console.log("displayTimeLeft", displayTimeLeft(seconds));
-  countdown = setInterval(() => {
+  countdownBreak = setInterval(() => {
     secondsLeft = Math.round((then - Date.now()) / 1000);
     
     // check if we should stop it!
     if(secondsLeft < 0) {
-      clearInterval(countdown);
-      return;
+      clearInterval(countdownBreak);
+      clearInterval(progress);
+      timer(sessionTime);
     }
     // display it
     displayTimeLeft(secondsLeft);
@@ -146,7 +153,7 @@ function breakSession() {
   // progress bar for session
   var fullBarWidth = document.getElementById('progress').offsetWidth;
   //console.log("fullBarWidth :", fullBarWidth);
-  var pxToFill = fullBarWidth / seconds;
+  var pxToFill = fullBarWidth / breakTime;
   console.log("pxToFill :", pxToFill);
   var progression = pxToFill;
   progress = setInterval(function() {
@@ -159,6 +166,7 @@ function breakSession() {
     }
   }, 1000);
     ////////.progress bar for session/////////////
+    
 }
 
 
