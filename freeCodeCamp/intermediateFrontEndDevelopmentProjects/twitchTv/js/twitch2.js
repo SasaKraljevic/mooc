@@ -44,6 +44,7 @@ $(document).ready(function() {
           console.log("OFFLINE USER LOGO :", channelData.logo);
           // status could be a null, so I need to put something instead
           console.log("OFFLINE USER STATUS :", channelData.status);
+          offlineUsers.push(channelData);
           })
         //console.log("OFFLINE USER :", user);
         //console.log("OFFLINE USER LINK:", 'https://www.twitch.tv/' + user);
@@ -76,4 +77,6 @@ $(document).ready(function() {
         
     });
     });
+
+  console.log("OFFLINE USERS ARRAY", offlineUsers);
 });
