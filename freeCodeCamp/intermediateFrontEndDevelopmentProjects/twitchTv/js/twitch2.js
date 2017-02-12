@@ -44,8 +44,29 @@ $(document).ready(function() {
           console.log("OFFLINE USER LOGO :", channelData.logo);
           // status could be a null, so I need to put something instead
           console.log("OFFLINE USER STATUS :", channelData.status);
-          offlineUsers.push(channelData);
-          })
+
+          $('#content').append('\
+            <div class="col-sm-6 col-md-4">\
+              <div class="thumbnail">\
+                <a href="">\
+                  <img src="..." alt="...">\
+                </a>\
+                <div class="caption">\
+                  <h3></h3>\
+                  <h4></h4>\
+                  <p class="status">...</p>\
+                  <span class="label label-success">Online</span>\
+                </div>\
+              </div>\
+            </div>');
+
+          $('h3').html(channelData.display_name);
+          //$('h4').html(userGame);
+          //$('.status').html(userStatus);
+          //$('img').attr('src', userLogo);
+          //$('a').attr('href', userUrl);
+          //offlineUsers.push(channelData);
+        });
         //console.log("OFFLINE USER :", user);
         //console.log("OFFLINE USER LINK:", 'https://www.twitch.tv/' + user);
         //console.log("STREAM DATA :", streamData._links.channel);
@@ -56,6 +77,7 @@ $(document).ready(function() {
           })
          console.log("#################");
 */
+
       }
 
       //var userName = streamData.stream.channel.display_name;
@@ -76,7 +98,8 @@ $(document).ready(function() {
       console.log("------------------------"); 
         
     });
-    });
 
-  console.log("OFFLINE USERS ARRAY", offlineUsers);
+    });
+//console.log("OFFLINE USERS ARRAY", offlineUsers);
+  
 });
