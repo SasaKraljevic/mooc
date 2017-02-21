@@ -84,6 +84,7 @@ function getOfflineData() {
   }); // end of users.forEach
 } // end of getOfflineData
 
+// get online users
 function getOnlineData() {
   $('#content').empty();
   users.forEach(function(user) {
