@@ -125,3 +125,6 @@ function getOnlineData() {
     });
   });
 } // end of getOnlineData
+
+getOnlineData();
+getOfflineData();
