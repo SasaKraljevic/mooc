@@ -1,0 +1,64 @@
+html,body {
+  margin:0;
+  background: #0e1f25;
+}
+
+.transpSquare {
+    background: #0e1f25;
+    float: left;
+    height: 15vw;
+    margin: 1%;
+    width: 20%;
+}
+.green {
+  background: #0e1f25;
+  border: 20px solid #29BF12;
+  border-radius: 10px;
+  float: left;
+  height: 15vw;
+  margin: 1%;
+  width: 20%;
+}
+.red {
+  background: #0e1f25;
+  border: 20px solid #F21B3F;
+  border-radius: 10px;
+  float: left;
+  height: 15vw;
+  margin: 1%;
+  width: 20%;
+}
+.yellow {
+  background: #0e1f25;
+  border: 20px solid #FF9914;
+  border-radius: 10px;
+  float: left;
+  height: 15vw;
+  margin: 1%;
+  width: 20%;
+}
+.blue {
+  background: #0e1f25;
+  border: 20px solid #08BDBD;
+  border-radius: 10px;
+  float: left;
+  height: 15vw;
+  margin: 1%;
+  width: 20%;
+}
+.green:hover {
+  background: #29BF12;
+}
+.red:hover {
+  background: #F21B3F;
+}
+.yellow:hover {
+  background: #FF9914;
+}
+.blue:hover {
+  background: #08BDBD;
+}
+section{
+    margin:-1%;
+    padding:20px;
+}
