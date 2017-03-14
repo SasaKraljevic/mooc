@@ -3,48 +3,37 @@ html,body {
   background: #0e1f25;
 }
 
-.transpSquare {
-    background: #0e1f25;
-    float: left;
-    height: 15vw;
-    margin: 1%;
-    width: 20%;
-}
 .green {
   background: #0e1f25;
   border: 20px solid #29BF12;
   border-radius: 10px;
-  float: left;
   height: 15vw;
-  margin: 1%;
-  width: 20%;
+  width: 100%;
+  padding: 10%;
 }
 .red {
   background: #0e1f25;
   border: 20px solid #F21B3F;
   border-radius: 10px;
-  float: left;
   height: 15vw;
-  margin: 1%;
-  width: 20%;
+  width: 100%;
+  padding: 10%;
 }
 .yellow {
   background: #0e1f25;
   border: 20px solid #FF9914;
   border-radius: 10px;
-  float: left;
   height: 15vw;
-  margin: 1%;
-  width: 20%;
+  width: 100%;
+  padding: 10%;
 }
 .blue {
   background: #0e1f25;
   border: 20px solid #08BDBD;
   border-radius: 10px;
-  float: left;
   height: 15vw;
-  margin: 1%;
-  width: 20%;
+  width: 100%;
+  padding: 10%;
 }
 .green:hover {
   background: #29BF12;
@@ -58,7 +47,37 @@ html,body {
 .blue:hover {
   background: #08BDBD;
 }
-section{
-    margin:-1%;
-    padding:20px;
+
+#squares {
+  border: 1px solid #808080;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+.row {
+  padding: 5px;
+}
+
+#controls {
+  border: 1px solid #808080;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#strict.active {
+    background: #bc2e29;
+    color: #fff;
+}
+
+#start, #strict {
+  background: #0e1f25;
+}
+.round {
+  font-size: 25px;
+  color: #808080;
+  font-weight: bold;
 }
