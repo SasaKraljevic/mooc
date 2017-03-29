@@ -1,14 +1,43 @@
 var tiles = document.getElementsByClassName('tile');
 var buttons = document.getElementsByClassName('button');
-
+/*document.getElementById("pcTurn").style.display='none';
+document.getElementById("userTurn").style.display='none';
+*/
 var square = [0,0,0,0,0,0,0,0,0];
 var playingGame = true;
 
-var USER = false;
-var COMPUTER = true;
+var user = false;
+var computer = true;
 
-var USERVALUE = -1;
-var COMPUTERVALUE = 1;
+var userValue = -1;
+var computerValue = 1;
+/*
+function choosePlayer(player) {
+    if (player.id != 'playerX') {
+      COMPUTER = false;
+      COMPUTERVALUE = -1;
+      USER = true;
+      USERVALUE = 1;
+      computerPlay();
+
+    }
+}
+*/
+
+
+function chooseX() {
+  //resetGame();
+  user = false;
+  computer = true;
+  userValue = -1;
+  computerValue = 1;
+  //computerPlay();
+}
+
+function chooseY() {
+
+  computerPlay();
+}
 
 var winPositions = [
   [0,1,2],
@@ -20,7 +49,11 @@ var winPositions = [
   [0,4,8],
   [2,4,6]
 ];
-
+/*
+function showButton(){
+  document.getElementById("pcTurn").style.display='block';
+}
+*/
 function resetGame() {
   document.getElementsByClassName('message')[0].innerHTML = "";
   for(var x = 0; x < 9; x++) {
@@ -28,7 +61,11 @@ function resetGame() {
     tiles[x].innerHTML = "<i class='fa fa-free-code-camp fa-3x' aria-hidden='true'></i>";
     square[x] = 0;
   }
-
+  /*for(var x = 0; x < 2; x++) {
+    buttons[x].style.width = "32vh";
+    buttons[x].style.margin = "0.5vh";
+    buttons[x].style.opacity = "1";
+  }*/
   playingGame = true;
 } // end of resetGame();
 
@@ -39,7 +76,7 @@ function makeMove(clickedElement) {
 
   for(var x = 0; x < 9; x++) {
     if(tiles[x] == clickedElement && square[x] == 0) { // if place is not taken
-      play(x, USER);
+      play(x, user);
       computerPlay();
     }
   }
@@ -50,14 +87,21 @@ function play(index, player) {
     return;
   }
   if(square[index] == 0) {
-
-    if(player == USER) {
+    /*buttons[0].style.width = "0";
+    buttons[0].style.margin = "0";
+    buttons[0].style.opacity = "0";
+    buttons[1].style.width = "32vh";
+*/
+    if(player == user) {
+      //tiles[index].style.background = "#22f";
       tiles[index].innerHTML = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
-      square[index] = USERVALUE;
+      square[index] = userValue;
     }
     else{
+      //tiles[index].style.background = "#f22";
       tiles[index].innerHTML = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
-      square[index] = COMPUTER;
+      //square[index] = COMPUTER;
+      square[index] = computerValue;
     }
     if(isThereWinner(square, player)) {
       playingGame = false; // game over
@@ -72,12 +116,13 @@ function play(index, player) {
 function isThereWinner(board, player) {
 
   var value;
-  if(player == USER) {
-    value = USERVALUE;
+  if(player == user) {
+    value = userValue;
   }
   else {
-  value = COMPUTERVALUE;
+  value = computerValue;
   }
+  //var value = player == USER ? USERVALUE : COMPUTERVALUE;
   for(var x = 0; x < 8; x++) {
     var winner = true;
 
@@ -103,10 +148,13 @@ function checkBoard(board) { // check if board is full
   return true;
 } // end of checkBoard()
 
+////////////////////////////////////////////////////
 function computerPlay() {
-  computerTurn(square, 0, COMPUTER);
+  computerTurn(square, 0, computer);
 }
-
+function computerPlayX() {
+  computerTurnX(square, 0, user);
+}
 function computerTurn(board, depth, player) {
   if(isThereWinner(board, !player)) {
     return -10 + depth;
@@ -117,13 +165,14 @@ function computerTurn(board, depth, player) {
   }
 
   var value;
-  if(player == USER) {
-    value = USERVALUE;
+  if(player == user) {
+    value = userValue;
   }
   else {
-    value = COMPUTERVALUE;
+    value = computerValue;
   }
 
+  //var value = player == USER ? USERVALUE : COMPUTERVALUE;
   var max = -Infinity;
   var index = 0;
 
@@ -137,9 +186,11 @@ function computerTurn(board, depth, player) {
         index = x;
       }
     }
+
   }
   if(depth == 0) {
-    play(index, COMPUTER);
+    play(index, computer);
   }
+//resetGame();
   return max;
 } // end of computerTurn();
