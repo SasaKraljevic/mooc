@@ -3,14 +3,17 @@ var buttons = document.getElementsByClassName('button');
 /*document.getElementById("pcTurn").style.display='none';
 document.getElementById("userTurn").style.display='none';
 */
+var u_html = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
+var c_html = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
+
 var square = [0,0,0,0,0,0,0,0,0];
 var playingGame = true;
 
-var user = false;
-var computer = true;
+var USER = false;
+var COMPUTER = true;
 
-var userValue = -1;
-var computerValue = 1;
+var USERVALUE = -1;
+var COMPUTERVALUE = 1;
 /*
 function choosePlayer(player) {
     if (player.id != 'playerX') {
@@ -26,15 +29,21 @@ function choosePlayer(player) {
 
 
 function chooseX() {
+  u_html;
+  c_html;
+
   //resetGame();
+  /*
   user = false;
   computer = true;
   userValue = -1;
-  computerValue = 1;
+  computerValue = 1;*/
   //computerPlay();
 }
 
-function chooseY() {
+function chooseO() {
+  c_html = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
+  u_html = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
 
   computerPlay();
 }
@@ -76,7 +85,7 @@ function makeMove(clickedElement) {
 
   for(var x = 0; x < 9; x++) {
     if(tiles[x] == clickedElement && square[x] == 0) { // if place is not taken
-      play(x, user);
+      play(x, USER);
       computerPlay();
     }
   }
@@ -92,16 +101,18 @@ function play(index, player) {
     buttons[0].style.opacity = "0";
     buttons[1].style.width = "32vh";
 */
-    if(player == user) {
+    if(player == USER) {
       //tiles[index].style.background = "#22f";
-      tiles[index].innerHTML = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
-      square[index] = userValue;
+      //tiles[index].innerHTML = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
+      tiles[index].innerHTML = u_html;
+      square[index] = USERVALUE;
     }
     else{
       //tiles[index].style.background = "#f22";
-      tiles[index].innerHTML = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
+      //tiles[index].innerHTML = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
+      tiles[index].innerHTML = c_html;
       //square[index] = COMPUTER;
-      square[index] = computerValue;
+      square[index] = COMPUTER;
     }
     if(isThereWinner(square, player)) {
       playingGame = false; // game over
@@ -116,11 +127,11 @@ function play(index, player) {
 function isThereWinner(board, player) {
 
   var value;
-  if(player == user) {
-    value = userValue;
+  if(player == USER) {
+    value = USERVALUE;
   }
   else {
-  value = computerValue;
+  value = COMPUTERVALUE;
   }
   //var value = player == USER ? USERVALUE : COMPUTERVALUE;
   for(var x = 0; x < 8; x++) {
@@ -150,11 +161,9 @@ function checkBoard(board) { // check if board is full
 
 ////////////////////////////////////////////////////
 function computerPlay() {
-  computerTurn(square, 0, computer);
+  computerTurn(square, 0, COMPUTER);
 }
-function computerPlayX() {
-  computerTurnX(square, 0, user);
-}
+
 function computerTurn(board, depth, player) {
   if(isThereWinner(board, !player)) {
     return -10 + depth;
@@ -165,11 +174,11 @@ function computerTurn(board, depth, player) {
   }
 
   var value;
-  if(player == user) {
-    value = userValue;
+  if(player == USER) {
+    value = USERVALUE;
   }
   else {
-    value = computerValue;
+    value = COMPUTERVALUE;
   }
 
   //var value = player == USER ? USERVALUE : COMPUTERVALUE;
@@ -189,7 +198,7 @@ function computerTurn(board, depth, player) {
 
   }
   if(depth == 0) {
-    play(index, computer);
+    play(index, COMPUTER);
   }
 //resetGame();
   return max;
