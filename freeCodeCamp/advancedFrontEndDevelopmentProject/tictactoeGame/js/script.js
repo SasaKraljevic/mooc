@@ -1,8 +1,6 @@
 var tiles = document.getElementsByClassName('tile');
 var buttons = document.getElementsByClassName('button');
-/*document.getElementById("pcTurn").style.display='none';
-document.getElementById("userTurn").style.display='none';
-*/
+
 var u_html = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
 var c_html = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
 
@@ -31,7 +29,7 @@ function choosePlayer(player) {
 function chooseX() {
   u_html;
   c_html;
-
+  setTimeout(showUserTurn, 200);
   //resetGame();
   /*
   user = false;
@@ -45,8 +43,27 @@ function chooseO() {
   c_html = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
   u_html = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
 
-  computerPlay();
+  setTimeout(showCompTurn, 200);
+  setTimeout(computerPlay, 1000);
 }
+//////////////
+function showUserTurn() {
+  //var userTurn = document.getElementById("userTurn").classList;
+  document.getElementById('compTurn').style.visibility = "hidden";
+  document.getElementById('compTurn').classList.remove('active');
+  document.getElementById('userTurn').style.visibility = "visible";
+  document.getElementById('userTurn').classList.add('active');
+}
+
+function showCompTurn() {
+
+  //var userTurn = document.getElementById("userTurn").classList;
+  document.getElementById('userTurn').style.visibility = "hidden";
+  document.getElementById('userTurn').classList.remove('active');
+  document.getElementById('compTurn').style.visibility = "visible";
+  document.getElementById('compTurn').classList.add('active');
+}
+/////////////
 
 var winPositions = [
   [0,1,2],
@@ -58,11 +75,7 @@ var winPositions = [
   [0,4,8],
   [2,4,6]
 ];
-/*
-function showButton(){
-  document.getElementById("pcTurn").style.display='block';
-}
-*/
+
 function resetGame() {
   document.getElementsByClassName('message')[0].innerHTML = "";
   for(var x = 0; x < 9; x++) {
@@ -70,15 +83,12 @@ function resetGame() {
     tiles[x].innerHTML = "<i class='fa fa-free-code-camp fa-3x' aria-hidden='true'></i>";
     square[x] = 0;
   }
-  /*for(var x = 0; x < 2; x++) {
-    buttons[x].style.width = "32vh";
-    buttons[x].style.margin = "0.5vh";
-    buttons[x].style.opacity = "1";
-  }*/
+
   playingGame = true;
 } // end of resetGame();
 
 function makeMove(clickedElement) {
+
   if(!playingGame) {  // if game is over
     return;
   }
@@ -86,12 +96,14 @@ function makeMove(clickedElement) {
   for(var x = 0; x < 9; x++) {
     if(tiles[x] == clickedElement && square[x] == 0) { // if place is not taken
       play(x, USER);
-      computerPlay();
+      showCompTurn();
+      setTimeout(computerPlay, 1000);
     }
   }
 } // end of makeMove();
 
 function play(index, player) {
+  showUserTurn();
   if(!playingGame) {
     return;
   }
@@ -102,12 +114,14 @@ function play(index, player) {
     buttons[1].style.width = "32vh";
 */
     if(player == USER) {
+
       //tiles[index].style.background = "#22f";
       //tiles[index].innerHTML = "<i class='fa fa-times fa-3x' aria-hidden='true'></i>";
       tiles[index].innerHTML = u_html;
       square[index] = USERVALUE;
     }
     else{
+
       //tiles[index].style.background = "#f22";
       //tiles[index].innerHTML = "<i class='fa fa-circle-o fa-3x' aria-hidden='true'></i>";
       tiles[index].innerHTML = c_html;
@@ -117,7 +131,7 @@ function play(index, player) {
     if(isThereWinner(square, player)) {
       playingGame = false; // game over
       var message = document.getElementsByClassName('message');
-      message[0].innerHTML = "Player " + tiles[index].innerHTML + " wins";
+      message[0].innerHTML = "Player " + "<span class='winner'>" + tiles[index].innerHTML + "</span>" + " wins";
 
       setTimeout(function() { resetGame(); }, 3000);
     }
@@ -175,9 +189,21 @@ function computerTurn(board, depth, player) {
 
   var value;
   if(player == USER) {
+    //////////////////////
+    //showUserTurn();
+    /*document.getElementById('compTurn').style.visibility = "hidden";
+    document.getElementById('compTurn').classList.remove('active');
+    document.getElementById('userTurn').style.visibility = "visible";
+    document.getElementById('userTurn').classList.add('active');*/
+    //////////////////////
     value = USERVALUE;
   }
   else {
+    //showCompTurn();
+    /*document.getElementById('userTurn').style.visibility = "hidden";
+    document.getElementById('userTurn').classList.remove('active');
+    document.getElementById('compTurn').style.visibility = "visible";
+    document.getElementById('compTurn').classList.add('active');*/
     value = COMPUTERVALUE;
   }
 

@@ -21,12 +21,12 @@ h1 {
   text-align: center;
   padding-top: 10vh;
   width: 35vh;
-
 }
+
 .nav-tabs > li {
   width: 50%;
   font-weight: bolder;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 .nav-tabs > li.active > a {
   background: #a6a6a6;
@@ -106,5 +106,9 @@ i {
 
 .message {
   font-size: 3em;
+  text-align: center;
+}
+.winner {
+  font-size: 2vh;
   text-align: center;
 }
