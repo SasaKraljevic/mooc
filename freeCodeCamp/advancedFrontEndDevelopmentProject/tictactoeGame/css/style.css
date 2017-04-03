@@ -2,31 +2,73 @@ html,body {
   padding: 0;
   margin:0;
   background: #1c3e4a;
-  color: #29BF12;
+  color: #939393;
   font-size: 1.5vh;
+}
+
+h1 {
+  font-size: 3em;
+  color: #939393;
+  text-align: center;
+}
+
+#controls {
+  text-align: center;
+  padding-top: 5px;
+}
+
+#turns {
+  text-align: center;
+  padding-top: 10vh;
+  width: 35vh;
+}
+
+.nav-tabs > li {
+  width: 50%;
+  font-weight: bolder;
+  visibility: hidden;
+}
+.nav-tabs > li.active > a {
+  background: #a6a6a6;
+  border: 0;
+  color: #fff;
+}
+
+.btn-primary {
+  background: #939393;
+  border: 0;
+}
+
+.btn-primary:hover,
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover {
+  background-color: #8c8c8c;
 }
 
 #main {
   margin: 0;
   padding: 0;
-  padding-top: 5vh;
+  padding-top: 1vh;
   height: auto;
   width: 100%;
 }
-
 #gameBoard {
   padding: 0;
   margin: auto;
-  width: 33vh;
+  width: 42vh;
   height: auto;
 }
 
 .tile {
   padding: 0;
   margin: 0.5vh;
-  height: 10vh;
-  width: 10vh;
-  border: 5px solid #006400;
+  height: 13vh;
+  width: 13vh;
+  border: 5px solid #939393;
   border-radius: 5px;
   background: #1c3e4a;
   cursor: pointer;
@@ -36,14 +78,8 @@ html,body {
   display:flex;
 }
 
-h1 {
-  font-size: 2em;
-  color: #939393;
-  text-align: center;
-}
-
 i {
-  color: #006400;
+  color: #939393;
 }
 
 .button {
@@ -61,17 +97,22 @@ i {
 }
 
 #reset {
-  background: #006400;
+  background: #939393;
   color: #fff;
-  width: 32vh; /* for using only reset button */
-}
-
-#controls {
-  text-align: center;
-  padding-top: 5px;
+  width: 41vh;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
 
 .message {
-  font-size: 2vh;
+  font-size: 3em;
+  text-align: center;
+}
+.winner {
+  font-size: 1.5vh;
+  text-align: center;
+}
+.footer {
+  padding-top: 50px;
   text-align: center;
 }
