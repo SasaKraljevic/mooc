@@ -109,6 +109,10 @@ i {
   text-align: center;
 }
 .winner {
-  font-size: 2vh;
+  font-size: 1.5vh;
+  text-align: center;
+}
+.footer {
+  padding-top: 50px;
   text-align: center;
 }
