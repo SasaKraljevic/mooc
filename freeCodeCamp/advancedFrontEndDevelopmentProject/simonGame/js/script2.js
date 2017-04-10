@@ -26,40 +26,37 @@ $(document).ready(function() {
   ];
   //console.log(sounds);
 
-  var colors = ['green', 'red', 'yellow', 'blue'];
+  var colors = ['green', 'red', 'yellow', 'blue']
   //console.log(colors);
 
+  var computerSounds = [];
+  var sound;
+  var userSounds = [];
 
-
-  function randomSound(array) {
-    computerSounds = [];
-    for(var i = 0; i < 20; i++) {
-      computerSounds.push(colors[Math.floor(Math.random()*colors.length)]);
-    }
+  function randomSound() {
+    sound = colors[Math.floor(Math.random()*colors.length)];
+    computerSounds.push(sound);
     console.log(computerSounds);
+    //setInterval(playSound(), 1000);
   }
+
+function makeSound(arr) {
+    for(var i = 0; i < arr.length; i++) {
+      document.getElementById(arr[i]).play();
+    }
+  }
+  function playSound() {
+    randomSound();
+    //computerSounds
+    setInterval(makeSound(computerSounds), 5000);
+  }
+  //document.getElementById(e).play();
+
+randomSound();
 randomSound();
 
 
-  function computerPlay() {
-    randomSound();
-    setTimeout(function() {
-    computerSounds.forEach(function(e) {
-
-      if(e === 'green') {
-        document.getElementsByClassName(e)[0].classList.add('gr');
-        document.getElementById(e).play();
-        setTimeout(function() {
-          document.getElementsByClassName(e)[0].classList.remove('gr');
-        }, 1000);
-      }
-    }, 2000);
-    }
-
-
-computerPlay();
-computerPlay();
-computerPlay();
+//makeSound(computerSounds);
 
 
   // napravi array od 20 random zvukova
@@ -68,7 +65,7 @@ computerPlay();
     for(var i = 0; i < 20; i++) {
       temp.push(sounds[Math.floor(Math.random()*sounds.length)]);
     }
-    console.log(temp);
+    //console.log(temp);
     return temp;
   }
 

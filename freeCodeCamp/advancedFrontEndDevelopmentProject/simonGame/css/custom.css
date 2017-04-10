@@ -11,6 +11,9 @@ html,body {
   width: 100%;
   padding: 10%;
 }
+.gr {
+  background: #29BF12;
+}
 .red {
   background: #0e1f25;
   border: 20px solid #F21B3F;
@@ -18,6 +21,9 @@ html,body {
   height: 15vw;
   width: 100%;
   padding: 10%;
+}
+.re {
+  background: #F21B3F;
 }
 .yellow {
   background: #0e1f25;
@@ -27,6 +33,9 @@ html,body {
   width: 100%;
   padding: 10%;
 }
+.ye {
+  background: #FF9914;
+}
 .blue {
   background: #0e1f25;
   border: 20px solid #08BDBD;
@@ -35,7 +44,10 @@ html,body {
   width: 100%;
   padding: 10%;
 }
-.green:hover {
+.bl {
+  background: #08BDBD;
+}
+/*.green:hover, green.greenBg {
   background: #29BF12;
 }
 .red:hover {
@@ -47,7 +59,7 @@ html,body {
 .blue:hover {
   background: #08BDBD;
 }
-
+*/
 #squares {
   border: 1px solid #808080;
   border-radius: 10px;
@@ -76,6 +88,12 @@ html,body {
 #start, #strict {
   background: #0e1f25;
 }
+
+#start.active {
+  background: #204d74;
+  color: #fff;
+}
+
 .round {
   font-size: 25px;
   color: #808080;

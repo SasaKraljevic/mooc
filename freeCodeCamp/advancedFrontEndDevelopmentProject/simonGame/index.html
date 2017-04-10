@@ -45,25 +45,32 @@
 
     <div class="container" id="controls">
       <div class="row">
-      <div class="col-sm-4">
-        <button type="button" class="btn btn-primary" id="start">Start</button>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="round">
-          10
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary" id="start" onclick="startButton();">Start</button>
         </div>
+
+        <div class="col-sm-4">
+          <div class="round">
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-danger" id="strict" onclick="strictButton();">Strict</button>
+        </div>
+
       </div>
 
-      <div class="col-sm-4">
-        <button type="button" class="btn btn-danger" id="strict">Strict</button>
-      </div>
-
+      <div class="row">
+        <div class="btn-group btn-toggle">
+          <button class="btn btn-xs btn-default" onclick="turnOn();" id="on">ON</button>
+          <button class="btn btn-xs btn-primary" onclick="turnOff();" id="off">OFF</button>
+        </div>
       </div>
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script4.js"></script>
 
 
 
