@@ -81,56 +81,47 @@ function randomSound() {
   var sound = colors[Math.floor(Math.random()*colors.length)];
   computerSounds.push(sound);
   console.log(computerSounds);
-  //setInterval(playSound(), 1000);
+  //setInterval(simonSays(), 1000);
 }
-randomSound();
-randomSound();
-randomSound();
-randomSound();
 
-function playSound(arr) {
-    for (var i = 0; i < arr.length; i++) {
-      setTimeout(function(x) {
-        return function() {
-          document.getElementById(arr[x]).play();
-          console.log(arr[x]);
-        };
-      }(i), 2000*i);
+
+function simonSays(arr) {
+  randomSound();
+  for (var i = 0; i < arr.length; i++) {
+    setTimeout(function(x) {
+      return function() {
+        var targetColor = document.getElementById(arr[x]).id;
+        console.log("USER COLOR :", targetColor);
+        document.getElementById(targetColor).play();
+      };
+    }(i), 2000*i);
+  }
+} // end of simonSays();
+
+function userSays(e) {
+  //console.log(e.innerHTML);
+  //var targetColor = e.getElementsByTagName('div')[0].className;
+  var audioId = e.getElementsByTagName('audio')[0].id;
+  console.log(audioId);
+  document.getElementById(audioId).play();
+  // add that id to userSounds array
+  userSounds.push(audioId);
+
+  compareArrays(computerSounds, userSounds);
+
+} // end of userSays();
+
+// compare computerSounds and userSounds arrays
+function compareArrays(arr1, arr2) {
+    for (var i = 0; i < arr1.length; i++) {
+      if (arr1[i] == arr2[i]) {
+        console.log("SAME");
+      }
+      else {
+        console.log("NOT SAME");
+      }
     }
-} // end of playSound();
-
-
-playSound(computerSounds);
-
-
-  /*if (arr instanceof Array) {
-    arr.shift();
-    console.log("AUDIO.SRC :", audio.src);
-    console.log("ARR :", arr);*/
-    //audio.play();
-
-    /*if (arr.length) {
-      console.log("ARRAY LENGTH: ", arr.length);
-      audio.addEventListener('ended', function() {
-        playSound(arr);
-      });
-    }
-  }*/
-
-
-/*
-function computerPlay() {
-  randomSound();
-  randomSound();
-  randomSound();
-
-    computerSounds.forEach(function(e) {
-      //setInterval(function() {
-        document.getElementById(e).play();
-    }, 2000);
-  });
 }
-*/
-//computerPlay();
 
-//playIt();
+
+simonSays(computerSounds);
