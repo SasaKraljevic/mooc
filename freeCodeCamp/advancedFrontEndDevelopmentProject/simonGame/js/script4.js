@@ -51,7 +51,7 @@ function turnOff() {
   document.getElementById('strict').disabled = true;
 }
 
-var round = 0;
+var round = 1;
 
 function startButton() {
   var x = document.getElementById('start');
@@ -91,7 +91,6 @@ function randomSound() {
 
 function simonSays(arr) {
   console.log("######## simonSays(arr);");
-  round++;
   userSounds = [];
   document.getElementById('rnd').innerHTML = round;
   for (var i = 0; i < arr.length; i++) {
@@ -127,8 +126,15 @@ function compareArrays(arr1, arr2) {
   if (JSON.stringify(arr1) == JSON.stringify(arr2)) {
     console.log("SAME");
     setTimeout(function(x) {
-      randomSound();
-      simonSays(computerSounds);
+      round++;
+      if (round == 4) {
+        document.getElementById('rnd').innerHTML = "You are the WINNER";
+        return;
+      } else {
+        document.getElementById('rnd').innerHTML = round;
+        randomSound();
+        simonSays(computerSounds);
+      }
     }, 2000);
   }
 }
