@@ -118,7 +118,7 @@ function userSays(e) {
       console.log("same length");
       setTimeout(function() {
         compareArrays(computerSounds, userSounds);
-      }, 2000);
+      }, 1000);
     }
 } // end of userSays();
 
@@ -135,6 +135,14 @@ function compareArrays(arr1, arr2) {
         randomSound();
         simonSays(computerSounds);
       }
-    }, 2000);
+    }, 1500);
+  } else {
+      console.log("NOT SAME");
+      document.getElementById('rnd').innerHTML = "Try again :)";
+      setTimeout(function() {
+        //userSounds = [];
+        simonSays(computerSounds);
+      }, 2000);
+
   }
 }
