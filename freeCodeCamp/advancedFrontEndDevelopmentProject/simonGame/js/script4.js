@@ -26,7 +26,10 @@ function turnOn() {
 }
 
 function turnOff() {
-
+  document.getElementById('rnd').innerHTML = "";
+  computerSounds = [];
+  userSounds = [];
+  round;
   var on = document.getElementById('on');
   on.disabled = false;
   var off = document.getElementById('off');
@@ -48,6 +51,8 @@ function turnOff() {
   document.getElementById('strict').disabled = true;
 }
 
+var round = 0;
+
 function startButton() {
   var x = document.getElementById('start');
   if(x.classList.contains("active")) {
@@ -56,8 +61,9 @@ function startButton() {
   } else {
     x.classList.add("active");
     x.innerHTML = 'Stop';
-    //randomSound();
-    //simonSays();
+
+    randomSound();
+    simonSays(computerSounds);
   }
 }
 
@@ -78,20 +84,24 @@ var computerSounds = [];
 var userSounds = [];
 
 function randomSound() {
+  console.log("######## randomSound();");
   var sound = colors[Math.floor(Math.random()*colors.length)];
   computerSounds.push(sound);
-  console.log(computerSounds);
+  console.log("COMPUTER SOUNDS from random();", computerSounds);
   //setInterval(simonSays(), 1000);
 }
 
 
 function simonSays(arr) {
-  randomSound();
+  console.log("######## simonSays(arr);");
+  //round += 1;
+  userSounds = [];
+  document.getElementById('rnd').innerHTML = arr.length;
   for (var i = 0; i < arr.length; i++) {
     setTimeout(function(x) {
       return function() {
         var targetColor = document.getElementById(arr[x]).id;
-        console.log("USER COLOR :", targetColor);
+        console.log("SIMON COLOR from simonSays();", targetColor);
         document.getElementById(targetColor).play();
       };
     }(i), 2000*i);
@@ -99,29 +109,59 @@ function simonSays(arr) {
 } // end of simonSays();
 
 function userSays(e) {
+  console.log("######## userSays(e);");
   //console.log(e.innerHTML);
   //var targetColor = e.getElementsByTagName('div')[0].className;
-  var audioId = e.getElementsByTagName('audio')[0].id;
-  console.log(audioId);
-  document.getElementById(audioId).play();
-  // add that id to userSounds array
-  userSounds.push(audioId);
+    var audioId = e.getElementsByTagName('audio')[0].id;
+    console.log("AUDIOiD from userSays();", audioId);
+    document.getElementById(audioId).play();
+    // add that id to userSounds array
+    userSounds.push(audioId);
+    console.log("USERSOUNDS from userSays();", userSounds);
 
-  compareArrays(computerSounds, userSounds);
+    //simonSays(computerSounds);
+    if (computerSounds.length == userSounds.length) {
+      console.log("same length");
+      setTimeout(function() {
+        compareArrays(computerSounds, userSounds);
+      }, 2000);
+
+    }
+
+
+//console.log("1",computerSounds);
+//console.log("2", userSounds);
 
 } // end of userSays();
+function compareArrays(arr1, arr2) {
+  if (JSON.stringify(arr1) == JSON. stringify(arr2)) {
+    console.log("SAME");
+    setTimeout(function(x) {
+      randomSound();
+      simonSays(computerSounds);
+    }, 2000);
+  }
 
+}
+/*
 // compare computerSounds and userSounds arrays
 function compareArrays(arr1, arr2) {
+console.log("######## compareArrays(arr1, arr2);");
     for (var i = 0; i < arr1.length; i++) {
+      console.log(i);
+        console.log("ARR1[i] from compareArrays();", arr1[i]);
+        console.log("ARR2[i] from compareArrays();", arr2[i]);
+
       if (arr1[i] == arr2[i]) {
         console.log("SAME");
+        setTimeout(function(x) {
+          randomSound();
+          simonSays(computerSounds);
+        }(i), 2000*i);
       }
-      else {
-        console.log("NOT SAME");
-      }
+
     }
-}
+} // end of compareArrays();
+*/
 
-
-simonSays(computerSounds);
+//simonSays(computerSounds);
