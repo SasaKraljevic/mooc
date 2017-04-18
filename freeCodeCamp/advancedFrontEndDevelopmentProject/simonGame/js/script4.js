@@ -30,9 +30,7 @@ function turnOn() {
 
 function turnOff() {
   document.getElementById('rnd').innerHTML = "";
-  //computerSounds = [];
-  //userSounds = [];
-  round;
+
   var on = document.getElementById('on');
   on.disabled = false;
   var off = document.getElementById('off');
@@ -113,13 +111,6 @@ function simonSays(arr) {
         console.log("ELEM :", elem[0]);
 
         blink(targetColor);
-/*
-        document.getElementById(targetColor).play();
-        elem[0].classList.add("gr");
-
-        setTimeout(function(x) {
-          elem[0].classList.remove("gr");
-        }, 500);*/
       };
     }(i), 2000*i);
 }
@@ -191,7 +182,6 @@ function compareArrays(arr1, arr2) {
       turnOff();
       turnOn();
       setTimeout(function() {
-        //userSounds = [];
         startButton();
       }, 2000);
 

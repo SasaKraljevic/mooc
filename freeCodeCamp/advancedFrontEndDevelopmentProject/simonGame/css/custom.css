@@ -100,9 +100,7 @@ html,body {
   font-weight: bold;
 }
 
-#whoPlays {
-  font-size: 25px;
-  color: #808080;
-  font-weight: bold;
+.footer {
+  /*padding-top: 20px;*/
   text-align: center;
 }
