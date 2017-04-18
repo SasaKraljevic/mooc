@@ -99,3 +99,10 @@ html,body {
   color: #808080;
   font-weight: bold;
 }
+
+#whoPlays {
+  font-size: 25px;
+  color: #808080;
+  font-weight: bold;
+  text-align: center;
+}

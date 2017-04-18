@@ -5,7 +5,10 @@ document.getElementById('on').disabled = false;
 
 
 function turnOn() {
-
+  document.getElementById('rnd').innerHTML = "";
+  computerSounds = [];
+  userSounds = [];
+  round = 1;
   var on = document.getElementById('on');
   on.disabled = true;
   var off = document.getElementById('off');
@@ -27,8 +30,8 @@ function turnOn() {
 
 function turnOff() {
   document.getElementById('rnd').innerHTML = "";
-  computerSounds = [];
-  userSounds = [];
+  //computerSounds = [];
+  //userSounds = [];
   round;
   var on = document.getElementById('on');
   on.disabled = false;
@@ -58,6 +61,8 @@ function startButton() {
   if(x.classList.contains("active")) {
     x.classList.remove("active");
     x.innerHTML = 'Start';
+    turnOff();
+    turnOn();
   } else {
     x.classList.add("active");
     x.innerHTML = 'Stop';
@@ -67,12 +72,15 @@ function startButton() {
   }
 }
 
+var strict = false;
 function strictButton() {
   var x = document.getElementById('strict');
   if(x.classList.contains("active")) {
     x.classList.remove("active");
+    strict = false;
   } else {
     x.classList.add("active");
+    strict = true;
   }
 }
 
@@ -88,28 +96,70 @@ function randomSound() {
   console.log("COMPUTER SOUNDS from random();", computerSounds);
 }
 
-
 function simonSays(arr) {
+
   console.log("######## simonSays(arr);");
+  var elem;
   userSounds = [];
   document.getElementById('rnd').innerHTML = round;
+
   for (var i = 0; i < arr.length; i++) {
+
     setTimeout(function(x) {
       return function() {
         var targetColor = document.getElementById(arr[x]).id;
         console.log("SIMON COLOR from simonSays();", targetColor);
+        elem = document.getElementsByClassName(targetColor);
+        console.log("ELEM :", elem[0]);
+
+        blink(targetColor);
+/*
         document.getElementById(targetColor).play();
+        elem[0].classList.add("gr");
+
+        setTimeout(function(x) {
+          elem[0].classList.remove("gr");
+        }, 500);*/
       };
     }(i), 2000*i);
-  }
+}
 } // end of simonSays();
+
+function blink(color) {
+  document.getElementById(color).play();
+  if (color == 'green') {
+    document.getElementsByClassName(color)[0].classList.add('gr');
+    setTimeout(function(x) {
+      document.getElementsByClassName(color)[0].classList.remove('gr');
+    }, 500);
+  }
+  if (color == 'red') {
+    document.getElementsByClassName(color)[0].classList.add('re');
+    setTimeout(function(x) {
+      document.getElementsByClassName(color)[0].classList.remove('re');
+    }, 500);
+  }
+  if (color == 'yellow') {
+    document.getElementsByClassName(color)[0].classList.add('ye');
+    setTimeout(function(x) {
+      document.getElementsByClassName(color)[0].classList.remove('ye');
+    }, 500);
+  }
+  if (color == 'blue') {
+    document.getElementsByClassName(color)[0].classList.add('bl');
+    setTimeout(function(x) {
+      document.getElementsByClassName(color)[0].classList.remove('bl');
+    }, 500);
+  }
+} // end of blink();
 
 function userSays(e) {
   console.log("######## userSays(e);");
   //console.log(e.innerHTML);
     var audioId = e.getElementsByTagName('audio')[0].id;
     console.log("AUDIOiD from userSays();", audioId);
-    document.getElementById(audioId).play();
+    blink(audioId);
+    //document.getElementById(audioId).play();
     // add that id to userSounds array
     userSounds.push(audioId);
     console.log("USERSOUNDS from userSays();", userSounds);
@@ -127,7 +177,7 @@ function compareArrays(arr1, arr2) {
     console.log("SAME");
     setTimeout(function(x) {
       round++;
-      if (round == 4) {
+      if (round == 21) {
         document.getElementById('rnd').innerHTML = "You are the WINNER";
         return;
       } else {
@@ -137,6 +187,15 @@ function compareArrays(arr1, arr2) {
       }
     }, 1500);
   } else {
+    if (strict == true) {
+      turnOff();
+      turnOn();
+      setTimeout(function() {
+        //userSounds = [];
+        startButton();
+      }, 2000);
+
+    }
       console.log("NOT SAME");
       document.getElementById('rnd').innerHTML = "Try again :)";
       setTimeout(function() {
